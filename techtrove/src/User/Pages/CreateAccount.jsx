@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { createAccount } from "../Redux/AuthReducer/action"
-// import { Link as loginLink} from "react-router-dom"
+import { Link } from "react-router-dom"
 import { FcGoogle } from 'react-icons/fc'
 import './CreateAccount.css'
 import { useDispatch } from "react-redux"
@@ -57,19 +57,20 @@ export const CreateAccount = () => {
                     <p>Use for Account Recovery.</p>
                 </div>
                 <input type="submit" value="Create an Account" className="createAccountButton" />
-                <div>
-                    {/* <br>or</br> */}
+                <div className="center_div">
+                    <hr /> or <hr />
                 </div>
                 <button className='googleSignup'>
                     <FcGoogle className="googleIcon" />
                     <h4>Sign up with Google</h4>
                 </button>
                 <p>By continue you agree to our
-                    {/* <Link>Terms And Conditions,</Link> */}
-                    {/* our <Link>Privacy Policy,</Link> and the <Link>My Best Buy Program Terms.</Link> */}
+                    <Link className="link">Terms And Conditions,</Link>
+                    our <Link className="link">Privacy Policy,</Link> and the <Link className="link">My Best Buy Program Terms.</Link>
                 </p>
                 <h4>Already have an account?
-                    {/* <Link>Sign in</Link> */}
+                    <Link className="link">Sign in</Link>
+
                 </h4>
             </form>
         </div>

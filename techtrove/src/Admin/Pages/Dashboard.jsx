@@ -74,6 +74,15 @@ const Dashboard = () => {
     </Flex>
   )
 }
+
+export default Dashboard
+
+
+
+
+
+
+
 const MiniStatistics = ({ title, amount, percentage, icon }) => {
   const iconTeal = useColorModeValue("teal.300", "teal.300");
   const textColor = useColorModeValue("gray.700", "white");
@@ -224,4 +233,3 @@ const SalesOverview = ({ title, percentage, chart }) => {
     </Card>
   );
 };
-export default Dashboard

@@ -1,8 +1,12 @@
 import React from 'react'
 
 const AdminCreate = () => {
+
   return (
-    <div>AdminCreate</div>
+    <div>
+     
+
+    </div>
   )
 }
 

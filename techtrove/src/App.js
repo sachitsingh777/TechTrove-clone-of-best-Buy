@@ -1,4 +1,3 @@
-
 import "./App.css";
 import AllRoutes from "./User/Components/AllRoutes";
 import Footer from "./User/Components/Footer";
@@ -10,7 +9,7 @@ function App() {
       <Navbar />
       <AllRoutes />
       <Footer />
- 
+       
     </>
   )}
 export default App;

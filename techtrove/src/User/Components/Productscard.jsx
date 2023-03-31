@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import { Link, useNavigate } from "react-router-dom";
 const Container = styled.div`
   display: flex;
   border: 2px solid red;
@@ -41,11 +42,16 @@ const Productscard = ({
   // "price": 339.99,
   // "category": "electronic",
   // "brand": "google"
+  const divert = useNavigate();
   const Button = {
     backgroundColor: "yellow",
   };
+  const handleRoute = () => {
+    divert(`/id=${id}`);
+  };
+
   return (
-    <Container>
+    <Container onClick={handleRoute}>
       <div style={{ width: "30%" }}>
         <img src={imgUrl} alt={id} />
       </div>

@@ -1,0 +1,63 @@
+body{
+    background-color: rgb(240,242,244);
+}
+form{
+    display:flex;
+    flex-direction:column;
+    width:350px;
+    margin:auto;
+    margin-top: 50px;
+    gap:20px;
+    background-color:white;
+    padding:20px;
+    border: 1px solid rgb(222, 222, 229);
+    /* height:600px; */
+}
+form>input{
+    /* height: 40px; */
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 10px;
+    color: black;
+    font-size: 20px;
+}
+.createAccountButton{
+    background-color: rgb(5, 63, 163);
+    font-weight: 700;
+    font-size: 17px;
+    color: white;
+}
+.createAccountButton:hover{
+    cursor: pointer;
+}
+.googleSignup{
+    border: 1px solid rgb(5, 63, 163);
+    color: rgb(5, 63, 163);
+    background-color: white;
+    height: 50px;
+    font-weight: 700;
+    font-size: 17px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.googleSignup:hover{
+    cursor: pointer;
+}
+h2{
+    margin-bottom: -20px;
+}
+p{
+    font-size: 14px;
+    color: grey;
+}
+.googleIcon{
+    margin-right: 10px;
+    font-size: 30px;
+}
+.center_div{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}

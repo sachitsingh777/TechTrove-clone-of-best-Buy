@@ -21,7 +21,7 @@ import { BsSearch } from "react-icons/bs";
 import { AiOutlineShop } from "react-icons/ai";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { HamburgerIcon } from "@chakra-ui/icons";
-
+import { TechTrove_logo } from "./Logo";
 const Navbar = () => {
   return (
     <Box
@@ -41,12 +41,15 @@ const Navbar = () => {
         spacing={{ md: "1.5rem", base: "2.5rem" }}
         display={{ base: "flex", md: "flex" }}
       >
+
         <Box w="15%" h="100%">
           <Link to={"/"}>
             <Image src="/TechTrove_logo.png" alt="logo" height={"100%"} />
           </Link>
         </Box>
         <Box p="1.5rem" alignItems={"center"} w="15%" h="100%">
+
+      
           <Menu>
             <MenuButton variant="outline">
               <Flex>

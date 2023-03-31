@@ -20,7 +20,7 @@ import { BsSearch } from "react-icons/bs";
 import { AiOutlineShop } from "react-icons/ai";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { HamburgerIcon } from "@chakra-ui/icons";
-
+import { TechTrove_logo } from "./Logo";
 const Navbar = () => {
   return (
     <Box
@@ -41,22 +41,22 @@ const Navbar = () => {
         <Link to={"/"}>
           <Box>
             <Image
-              src="/TechTrove_logo.png"
+              src={TechTrove_logo.image}
               alt="logo"
-              width="9rem"
-              height={{ base: "3rem", md: "100%" }}
+              width="10%"
+              height={{ base: "30px", md: "100%" }}
             />
           </Box>
         </Link>
 
-        <Box >
+        <Box>
           {/* <Flex gap={"2px"}>
             <GiHamburgerMenu style={{ fontSize: "1.5rem" }} />
             <Heading as="h4" size="md">
               Menu
             </Heading>
           </Flex> */}
-          <Menu >
+          <Menu>
             <MenuButton variant="outline">
               <Heading as="h4" size="md">
                 <HamburgerIcon
@@ -65,10 +65,10 @@ const Navbar = () => {
                 Menu
               </Heading>
             </MenuButton>
-            <MenuList color={"#0046be"} >
+            <MenuList color={"#0046be"}>
               <MenuItem>Deals </MenuItem>
               <Divider />
-              <MenuItem >
+              <MenuItem>
                 Support & Services <IoIosArrowForward />
               </MenuItem>
               <Divider />
@@ -77,7 +77,13 @@ const Navbar = () => {
               <MenuItem>Featured</MenuItem>
               <Divider />
               <MenuItem>
-                <Heading as="h4" size="md" mb={"0.5rem"} mt="0.5rem" color={"black"}>
+                <Heading
+                  as="h4"
+                  size="md"
+                  mb={"0.5rem"}
+                  mt="0.5rem"
+                  color={"black"}
+                >
                   Shop by Department
                 </Heading>
               </MenuItem>

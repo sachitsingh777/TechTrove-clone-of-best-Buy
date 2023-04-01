@@ -10,12 +10,7 @@ const Home = () => {
   return (
     <Box color={"black"} bgColor="white">
       <Menubar />
-      <HStack
-        spacing={"25px"}
-        p="1rem"
-        // border={"1px solid red"}
-        bgColor="white"
-      >
+      <HStack spacing={"25px"} p="1rem" bgColor="white">
         <Box
           w={"44%"}
           h="40rem"
@@ -40,24 +35,28 @@ const Home = () => {
           </Box>
         </Box>
         <Box h="40rem" w={"56%"} bgColor="white">
-          <Box border={"1px solid #A0AEC0"} p="1rem" mb="26px">
+          <Box border={"1px solid #A0AEC0"} p="1rem" mb="26px" h={"36%"}>
             <Heading as="h5" size="sm">
               Recomanded for you
             </Heading>
-            <Box
-              display={"flex"}
-              flexDirection="row"
-              justifyContent={"space-evenly"}
-            >
-              {BestBuy?.map((el) => (
-                <HomeCard key={el.id} {...el} />
-              ))}
+            <Box overflowX={"auto"}>
+              <Box
+                display={"flex"}
+                flexDirection="row"
+                width={"797px"}
+                justifyContent={"space-evenly"}
+              >
+                {BestBuy?.map((el) => (
+                  <HomeCard key={el.id} {...el} />
+                ))}
+              </Box>
             </Box>
           </Box>
-          <Box display="flex">
+          <Box display="flex" h={"60%"}>
             <Box
               _hover={{ cursor: "pointer" }}
               w={"50%"}
+              h="100%"
               border={"1px solid #A0AEC0"}
             >
               <Image src="/outletdeal.png" h={"fit-content"} />
@@ -70,9 +69,17 @@ const Home = () => {
               w={"50%"}
               border={"1px solid #A0AEC0"}
               ml="25px"
+              h="100%"
             >
-              <Image src="/outletdeal.png" h={"fit-content"} />
-              <Text ml={"15px"} color={"#0046be"}>
+              <Image
+                src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6340/6340453_sd.jpg;maxHeight=640;maxWidth=550"
+                h={"50%"}
+                margin="40px 0px 15px 100px"
+              />
+              <Text ml={"15px"} color={"#0046be"} fontSize='md'  _hover={{ cursor: "pointer",textDecoration:"underline" }}>Apple - 12.9-Inch iPad Pro with Wi-Fi + Cellular - 256GB</Text>
+              <Text ml={"15px"} color={"#000000"} fontSize='md'>$799.99</Text>
+              <Text ml={"15px"} textDecoration={"line-through"} fontSize='md'>$999.99</Text>
+              <Text m={"15px 15px"} color={"#0046be"}>
                 See bonus deals
               </Text>
             </Box>
@@ -88,23 +95,23 @@ const Home = () => {
         <Divider colorScheme={"gray"} />
 
         <Box overflowX={"auto"}>
-        <Box
-          display={"flex"}
-          flexDirection="row"
-          width="1400px"
-          p={"2rem"}
-          gap={"5px"}
-          borderTop="1px solid #A0AEC0"
-        >
-          {TopDeals?.map((el) => (
-            <HomeCard2 key={el.id} {...el} />
-          ))}
-        </Box>
+          <Box
+            display={"flex"}
+            flexDirection="row"
+            width="1450px"
+            p={"2rem"}
+            gap={"5px"}
+            borderTop="1px solid #A0AEC0"
+          >
+            {TopDeals?.map((el) => (
+              <HomeCard2 key={el.id} {...el} />
+            ))}
+          </Box>
         </Box>
       </Box>
       <br />
-
-      <HStack p="1rem" spacing={"25px"} justifyContent="space-around">
+<Box overflowX={"auto"}>
+<HStack p="1rem" spacing={"25px"} width="1500px" justifyContent="space-around">
         <Box
           w={"33%"}
           border={"1px solid #A0AEC0"}
@@ -127,13 +134,15 @@ const Home = () => {
           <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/subghp-EVN-205712-upgrade-plus-b513dde8-d003-432d-b792-8b4eb9903e0d.jpg;maxHeight=960;maxWidth=960" />
         </Box>
       </HStack>
+</Box>
+      
 
       <br />
-      <Box p="1rem">
+      <Box overflowX={"auto"}>
+      <Box p="1rem" width={"1500px"}>
         <Heading as="h4" size="md" mb={"12px"}>
           Our featured offers
         </Heading>
-        <Divider colorScheme={"gray"} />
 
         <Box
           display={"flex"}
@@ -142,11 +151,10 @@ const Home = () => {
           gap={"5px"}
           borderTop="1px solid #A0AEC0"
         >
-          <HStack justifyContent="space-around">
+          <HStack>
             <Box
               _hover={{ cursor: "pointer" }}
-              p="1rem"
-              w={"33%"}
+              p="1.5rem"
               borderRight="1px solid #A0AEC0"
             >
               <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/pol-MMT-665820_DER-87a2497b-38b8-45a5-b746-0bb83bc7ee42.jpg;maxHeight=504;maxWidth=740" />
@@ -164,12 +172,10 @@ const Home = () => {
                 appliances.
               </Text>
             </Box>
-            <Divider colorScheme={"gray"} orientation="vertical" />
 
             <Box
               _hover={{ cursor: "pointer" }}
-              p="1rem"
-              w={"33%"}
+              p="0.5rem"
               borderRight="1px solid #A0AEC0"
             >
               <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/top-MMT-665816-Save350WindowsLaptops_DER-b825f326-fdf3-4358-a96c-2bee0b54751f.jpg;maxHeight=504;maxWidth=740" />
@@ -186,8 +192,8 @@ const Home = () => {
                 Minimum saving is %50
               </Text>
             </Box>
-            <Divider colorScheme={"gray"} orientation="vertical" />
-            <Box _hover={{ cursor: "pointer" }} p="1rem" w={"33%"}>
+
+            <Box _hover={{ cursor: "pointer" }} p="1rem">
               <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/MMT-635964-airpods-family-pol_der-c4fae3bf-49cc-4618-98ee-ca0a80ab6265.jpg;maxHeight=504;maxWidth=740" />
               <Heading
                 _hover={{ cursor: "pointer", textDecoration: "underline" }}
@@ -205,6 +211,7 @@ const Home = () => {
             </Box>
           </HStack>
         </Box>
+      </Box>
       </Box>
       <br />
       <br />

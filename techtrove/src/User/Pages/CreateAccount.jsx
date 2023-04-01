@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { createAccount } from "../Redux/AuthReducer/action"
+
 import { Link } from "react-router-dom"
 import { FcGoogle } from 'react-icons/fc'
 import './CreateAccount.css'

@@ -21,7 +21,7 @@ import { BsSearch } from "react-icons/bs";
 import { AiOutlineShop } from "react-icons/ai";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { TechTrove_logo } from "./Logo";
+
 const Navbar = () => {
   return (
     <Box
@@ -36,7 +36,7 @@ const Navbar = () => {
     >
       <HStack
         h="100%"
-        width={{ md: "60%", base: "100%" }}
+        width={{ md: "90%", base: "90%" }}
         paddingLeft={{ md: "2rem", base: "0.5rem" }}
         spacing={{ md: "1.5rem", base: "2.5rem" }}
         display={{ base: "flex", md: "flex" }}
@@ -52,7 +52,7 @@ const Navbar = () => {
       
           <Menu>
             <MenuButton variant="outline">
-              <Flex>
+              <Flex color={"white"}>
                 <HamburgerIcon
                   style={{ fontSize: "1.7rem", marginRight: "3px" }}
                 />
@@ -112,6 +112,7 @@ const Navbar = () => {
               pr="4.5rem"
               borderWidth="2px"
               borderColor="gray.200"
+              backgroundColor={"white"}
             ></Input>
             <InputRightElement width="4.5rem">
               <BsSearch style={{ color: "black", fontSize: "1.5rem" }} />
@@ -125,11 +126,12 @@ const Navbar = () => {
         borderBottom={"1px solid black"}
         h="100%"
         width={"40%"}
-        display={{base:"none", lg:"flex"}}
+        spacing={"30px"}
+        display={{base:"none", lg:"flex",}}
       >
         <Box h="100%" width={"20%"} p={"1rem"}>
           <Link to={"/store"}>
-            <Flex gap={"2px"} alignItems="center">
+            <Flex color={"white"} gap={"2px"} alignItems="center">
               <Icon as={AiOutlineShop} fontSize="2rem" />
               <Heading as="h4" size="md">
                 Aiea
@@ -139,7 +141,7 @@ const Navbar = () => {
         </Box>
         <Box h="100%" width={"20%"} p={"1rem"}>
           <Link to={"/cart"}>
-            <Flex gap={"2px"} alignItems="center">
+            <Flex color={"white"} gap={"2px"} alignItems="center">
               <Icon as={HiOutlineShoppingCart} fontSize="2rem" />
               <Heading as="h4" size="md">
                 Cart

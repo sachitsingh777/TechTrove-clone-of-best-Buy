@@ -54,7 +54,7 @@ export const Cart = () => {
                     <hr />
                     <h4>Total</h4>
                     <button>Checkout</button>
-                    <button>PayPAl <h4>checkout</h4></button>
+                    <button>PayPal <h4>checkout</h4></button>
 
                     <p>My Best Buy® members enjoy exclusive offers & free shipping with no minimum purchase.</p>
                     <Link className="link">Sign in or create an account now</Link>

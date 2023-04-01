@@ -26,6 +26,8 @@ const Footer = () => {
         bgColor={"#f0f2f4"}
         p="1rem 2rem 2rem 2rem"
         lineHeight={"2.2rem"}
+       borderTop={"1px solid white"}
+      
       >
         <HStack gap={"9rem"}>
           <Box>

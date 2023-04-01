@@ -7,11 +7,11 @@ import MainRoutes from "./Admin/Pages/MainRoutes"
 function App() {
   return (
     <>
-      {/* <Navbar />
+      <Navbar />
       <AllRoutes />
-      <Footer /> */}
+      <Footer />
         
-       <MainRoutes/>
+      
     </>
   )}
 export default App;

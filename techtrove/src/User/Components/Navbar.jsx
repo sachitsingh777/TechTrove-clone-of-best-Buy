@@ -1,9 +1,9 @@
 import {
   Box,
-  Button,
   Divider,
   Flex,
   Heading,
+  HStack,
   Image,
   Input,
   InputGroup,
@@ -13,6 +13,7 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
+import { Icon } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
@@ -20,7 +21,7 @@ import { BsSearch } from "react-icons/bs";
 import { AiOutlineShop } from "react-icons/ai";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { HamburgerIcon } from "@chakra-ui/icons";
-
+import { TechTrove_logo } from "./Logo";
 const Navbar = () => {
   return (
     <Box
@@ -30,45 +31,40 @@ const Navbar = () => {
       bg="#0046be"
       boxShadow=" 0px 7px 7px -5px rgba(120,108,120,0.2)"
       borderBottom={"1px solid white"}
+      h="4.5rem"
+      display={"flex"}
     >
-      <Flex
-        height={{ base: "3.2rem", md: "4.94rem" }}
-        px={{ base: "1rem", md: "3rem" }}
-        gap="2.5rem"
-        // justify={"space-between"}
-        align={"center"}
+      <HStack
+        h="100%"
+        width={{ md: "60%", base: "100%" }}
+        paddingLeft={{ md: "2rem", base: "0.5rem" }}
+        spacing={{ md: "1.5rem", base: "2.5rem" }}
+        display={{ base: "flex", md: "flex" }}
       >
-        <Link to={"/"}>
-          <Box>
-            <Image
-              src="/TechTrove_logo.png"
-              alt="logo"
-              width="9rem"
-              height={{ base: "3rem", md: "100%" }}
-            />
-          </Box>
-        </Link>
 
-        <Box >
-          {/* <Flex gap={"2px"}>
-            <GiHamburgerMenu style={{ fontSize: "1.5rem" }} />
-            <Heading as="h4" size="md">
-              Menu
-            </Heading>
-          </Flex> */}
-          <Menu >
+        <Box w="15%" h="100%">
+          <Link to={"/"}>
+            <Image src="/TechTrove_logo.png" alt="logo" height={"100%"} />
+          </Link>
+        </Box>
+        <Box p="1.5rem" alignItems={"center"} w="15%" h="100%">
+
+      
+          <Menu>
             <MenuButton variant="outline">
-              <Heading as="h4" size="md">
+              <Flex>
                 <HamburgerIcon
                   style={{ fontSize: "1.7rem", marginRight: "3px" }}
                 />
-                Menu
-              </Heading>
+                <Heading as="h4" size="md">
+                  Menu
+                </Heading>
+              </Flex>
             </MenuButton>
-            <MenuList color={"#0046be"} >
+            <MenuList color={"#0046be"}>
               <MenuItem>Deals </MenuItem>
               <Divider />
-              <MenuItem >
+              <MenuItem>
                 Support & Services <IoIosArrowForward />
               </MenuItem>
               <Divider />
@@ -77,7 +73,13 @@ const Navbar = () => {
               <MenuItem>Featured</MenuItem>
               <Divider />
               <MenuItem>
-                <Heading as="h4" size="md" mb={"0.5rem"} mt="0.5rem" color={"black"}>
+                <Heading
+                  as="h4"
+                  size="md"
+                  mb={"0.5rem"}
+                  mt="0.5rem"
+                  color={"black"}
+                >
                   Shop by Department
                 </Heading>
               </MenuItem>
@@ -103,47 +105,49 @@ const Navbar = () => {
             </MenuList>
           </Menu>
         </Box>
-
-        <Box mr={"15rem"}>
-          <InputGroup bgColor={"white"} borderRadius="0.5rem">
+        <Box w="62%" h="100%" pt={"1rem"}>
+          <InputGroup borderRadius="0.5rem">
             <Input
-              // type={show ? 'text' : 'password'}
               placeholder="What can we help you find today?"
-              width={"40rem"}
-              color="black"
-              colorScheme={"gray"}
-            />
-            <InputRightElement width="5rem">
-              <Button h="100%" variant="ghost">
-                <BsSearch style={{ color: "black", fontSize: "1.5rem" }} />
-              </Button>
+              pr="4.5rem"
+              borderWidth="2px"
+              borderColor="gray.200"
+            ></Input>
+            <InputRightElement width="4.5rem">
+              <BsSearch style={{ color: "black", fontSize: "1.5rem" }} />
             </InputRightElement>
           </InputGroup>
         </Box>
-        <Link to={"/store"}>
-          <Box>
-            <Flex gap={"2px"}>
-              <AiOutlineShop style={{ fontSize: "1.5rem" }} />
-
+      </HStack>
+      <HStack
+        pr={"5rem"}
+        justifyContent={"flex-end"}
+        borderBottom={"1px solid black"}
+        h="100%"
+        width={"40%"}
+        display={{base:"none", lg:"flex"}}
+      >
+        <Box h="100%" width={"20%"} p={"1rem"}>
+          <Link to={"/store"}>
+            <Flex gap={"2px"} alignItems="center">
+              <Icon as={AiOutlineShop} fontSize="2rem" />
               <Heading as="h4" size="md">
-                {" "}
                 Aiea
               </Heading>
             </Flex>
-          </Box>
-        </Link>
-
-        <Link to={"/cart"}>
-          <Box>
-            <Flex gap={"2px"}>
-              <HiOutlineShoppingCart style={{ fontSize: "1.5rem" }} />
+          </Link>
+        </Box>
+        <Box h="100%" width={"20%"} p={"1rem"}>
+          <Link to={"/cart"}>
+            <Flex gap={"2px"} alignItems="center">
+              <Icon as={HiOutlineShoppingCart} fontSize="2rem" />
               <Heading as="h4" size="md">
                 Cart
               </Heading>
             </Flex>
-          </Box>
-        </Link>
-      </Flex>
+          </Link>
+        </Box>
+      </HStack>
     </Box>
   );
 };

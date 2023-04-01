@@ -1,13 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import axios from "axios";
 
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 const Container = styled.div`
   display: flex;
   border: 2px solid red;
   height: 250px;
   width: 900px;
-  margin: 20px;
-  gap: 20px;
+
+  gap: 10px;
+`;
+const H4 = styled.h3`
+  font-size: 20px;
+  font-weight: 3px;
+`;
+const H6 = styled.h3`
+  font-size: 17px;
+  font-weight: 3px;
 `;
 const Productscard = ({
   imgUrl,
@@ -23,36 +33,62 @@ const Productscard = ({
   p1,
   p2,
 }) => {
-  // "id": 25,
-  // "imgUrl": "https://multimedia.bbycastatic.ca/multimedia/products/250x250/156/15621/15621549.jpg",
-  // "title": "Google Nest Cam Wire-Free Indoor/Outdoor Security Camera",
-  // "rate": "⭐⭐⭐⭐",
-  // "review": 627,
-  // "top": "Top Deal",
-  // "save": "SAVE $50",
-  // "price": 339.99,
-  // "category": "electronic",
-  // "brand": "google"
+  const divert = useNavigate();
+  const Button = {
+    backgroundColor: "yellow",
+  };
+  const handleRoute = () => {
+    divert(`/products/${id}`);
+  };
+  const Addcart = async () => {
+    let newobj = {
+      imgUrl,
+      title,
+      rate,
+      review,
+      top,
+      save,
+      id,
+      price,
+      category,
+      brand,
+      p1,
+      p2,
+    };
+
+    let data = await axios.post(
+      "https://json-server-bestbuy.onrender.com/AddToCart",
+      newobj
+    );
+    console.log(data.data);
+  };
   return (
     <Container>
-      <div>
+      <div style={{ width: "30%" }} onClick={handleRoute}>
         <img src={imgUrl} alt={id} />
       </div>
-      <div>
-        <p>{title}</p>
+      <div style={{ padding: "2", width: "40%" }} onClick={handleRoute}>
+        <H4>{title}</H4>
         <h4>{brand}</h4>
-        <p>
-          `${rate}(${review})`
-        </p>
+        <p>{`${rate}(${review})`}</p>
         <p>{`Pickup:${
           p1 ? p1 : "Order now for pickup on Wed, Apr 19 at Aiea"
         }`}</p>
         <p>{`Online:${p2 ? p2 : "Not Available"}`}</p>
       </div>
-      <dir>
-        <h1>{`$${price}`}</h1>
-        <button style={{ backgroundColor: "yellow" }}>Add to cart</button>
-      </dir>
+      <div
+        style={{
+          width: "30%",
+          alignItems: "center",
+          margin: "auto",
+          border: "1px solid black",
+        }}
+      >
+        <H4>${price}</H4>
+        <button onClick={Addcart} style={Button}>
+          Add to cart
+        </button>
+      </div>
     </Container>
   );
 };

@@ -8,9 +8,9 @@ import AdminHome from "./Admin/AdminHome"
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar />
       <AllRoutes />
-      <Footer />
+      <Footer /> */}
     </>
   )}
 export default App;

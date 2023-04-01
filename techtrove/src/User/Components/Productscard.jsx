@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import axios from "axios";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 const Container = styled.div`
   display: flex;
   border: 2px solid red;
@@ -32,30 +33,41 @@ const Productscard = ({
   p1,
   p2,
 }) => {
-  // "id": 25,
-  // "imgUrl": "https://multimedia.bbycastatic.ca/multimedia/products/250x250/156/15621/15621549.jpg",
-  // "title": "Google Nest Cam Wire-Free Indoor/Outdoor Security Camera",
-  // "rate": "⭐⭐⭐⭐",
-  // "review": 627,
-  // "top": "Top Deal",
-  // "save": "SAVE $50",
-  // "price": 339.99,
-  // "category": "electronic",
-  // "brand": "google"
   const divert = useNavigate();
   const Button = {
     backgroundColor: "yellow",
   };
   const handleRoute = () => {
-    divert(`/id=${id}`);
+    divert(`/products/${id}`);
   };
+  const Addcart = async () => {
+    let newobj = {
+      imgUrl,
+      title,
+      rate,
+      review,
+      top,
+      save,
+      id,
+      price,
+      category,
+      brand,
+      p1,
+      p2,
+    };
 
+    let data = await axios.post(
+      "https://json-server-bestbuy.onrender.com/AddToCart",
+      newobj
+    );
+    console.log(data.data);
+  };
   return (
-    <Container onClick={handleRoute}>
-      <div style={{ width: "30%" }}>
+    <Container>
+      <div style={{ width: "30%" }} onClick={handleRoute}>
         <img src={imgUrl} alt={id} />
       </div>
-      <div style={{ padding: "2", width: "40%" }}>
+      <div style={{ padding: "2", width: "40%" }} onClick={handleRoute}>
         <H4>{title}</H4>
         <h4>{brand}</h4>
         <p>{`${rate}(${review})`}</p>
@@ -73,7 +85,9 @@ const Productscard = ({
         }}
       >
         <H4>${price}</H4>
-        <button style={Button}>Add to cart</button>
+        <button onClick={Addcart} style={Button}>
+          Add to cart
+        </button>
       </div>
     </Container>
   );

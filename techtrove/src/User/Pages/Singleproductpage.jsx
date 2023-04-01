@@ -45,7 +45,7 @@ export default function Singleproductpage() {
   //   console.log(initialfilter);
   const singleData = async () => {
     let singledata = await axios.get(
-      `https://json-server-bestbuy.onrender.com/products/${id}`
+      `https://beautiful-calf-wear.cyclic.app/products/${id}`
     );
     console.log(singledata.data);
     setdata(singledata.data);
@@ -62,26 +62,26 @@ export default function Singleproductpage() {
   //     "category": "TV",
   //     "brand": "Amazon"
   const Addcart = async () => {
-    let newobj = {
-      id: data.id,
-      imgUrl: data.imgUrl,
-      title: data.title,
-      rate: data.rate,
-      top: data.top,
-      save: data.save,
-      price: data.price,
-      category: data.category,
-      brand: data.brand,
-    };
+    // let newobj = {
+    //   id: data.id,
+    //   imgUrl: data.imgUrl,
+    //   title: data.title,
+    //   rate: data.rate,
+    //   top: data.top,
+    //   save: data.save,
+    //   price: data.price,
+    //   category: data.category,
+    //   brand: data.brand,
+    // };
     try {
       let newdata = await axios.post(
-        "https://json-server-bestbuy.onrender.com/AddToCart",
-        newobj
+        "https://beautiful-calf-wear.cyclic.app/AddToCart ",
+        data
       );
     } catch {
       console.log("errooooooor");
     }
-    console.log(newobj);
+    // console.log(newobj);
   };
   useEffect(() => {
     singleData();

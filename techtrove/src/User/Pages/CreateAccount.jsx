@@ -1,13 +1,19 @@
-import { useState } from "react"
 
-import { Link } from "react-router-dom"
+
+
+
+
+import { useEffect, useState } from "react"
+import { createAccount } from "../Redux/AuthReducer/action"
+import { Link, Navigate } from "react-router-dom"
+
 import { FcGoogle } from 'react-icons/fc'
 import './CreateAccount.css'
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 const initialState = {
     firstname: '',
-    lastname: '',
+    lastname: '', 
     email: '',
     password: '',
     confirmpassword: '',
@@ -15,15 +21,26 @@ const initialState = {
 }
 export const CreateAccount = () => {
     const [formData, setFormData] = useState(initialState)
-    // const dispatch=useDispatch()
-
+    const dispatch=useDispatch()
+    const selector=useSelector((store)=>{
+        return store.authReducer.accountCreatedSuccessfull
+    })
+    useEffect(()=>{
+        if(selector){
+            <Navigate to='/login' />
+        }
+    },[])
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value })
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        // dispatch(createAccount(formData))
+        if(password!=confirmpassword){
+            alert("Password not match!")
+            return
+        }
+        dispatch(createAccount(formData))
 
     }
     const { firstname, lastname, email, password, confirmpassword, mobile } = formData

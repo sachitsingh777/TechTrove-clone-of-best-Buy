@@ -1,0 +1,109 @@
+p {
+    font-size: 12px;
+
+}
+.button{
+    /* style={{ color: 'blue', border: '1px solid blue', backgroundColor: 'white', height: "45%", width: "170px", marginTop: '15px', borderRadius: '4px fontWeight: bold; */
+color: blue;
+border: 1px solid blue;
+background-color: white;
+height: 45%;
+width: 170px;
+margin-top: 15px;
+border-radius: 4px;
+font-weight: bold;
+font-size: 13px;
+}
+.button:hover{
+
+    cursor: pointer;
+    color: white;
+    background-color: blue;
+}
+div {
+    border: 1px solid teal;
+}
+.parentdiv{
+    background-color: rgb(243, 246, 249);
+}
+.secondDiv{
+    width: 70%;
+}
+.yourCart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+
+
+
+.bestBuy>h3 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+.bestBuy>h1 {
+    font-weight: bold;
+    font-size: 35px;
+
+}
+.firstDiv{
+    display: flex;
+}
+.orderSummary{
+    /* text-align: center; */
+    width: 30%;
+    gap: 100px;
+}
+.orderSummary>h2{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+.orderSummary>Link{
+    color: blue;
+    font-size: 13px;
+}
+.orderSummary>button{
+    border: 1px solid teal;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+
+}
+.orderSummary>button{
+    cursor: pointer;
+}
+.orderSummary>button{
+    background-color: rgb(255,224,0);
+    border-radius: 3px;
+    border: none;
+}
+.orderSummary>button~button{
+    background-color: rgb(29,37,44);
+    color: white;
+    font-size: 20px;
+    gap: 10px;
+}
+.orderSummary>button~button>h4{
+    font-size: 14px
+}
+.link{
+    color: rgb(89, 89, 251);
+    font-size: 13px;
+}
+.orderSummary>h5,h6,h2{
+    font-weight: bold;
+
+}
+.orderSummary>div{
+    display: flex;
+}
+.orderSummary>div>img{
+    width: 10%;
+}

@@ -6,7 +6,6 @@ import {
   Flex,
   Icon,
   useColorModeValue,
-  Link,
   Drawer,
   DrawerContent,
   Text,
@@ -27,13 +26,14 @@ import {
 } from "./Icons/Icons";
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
+import {Link} from "react-router-dom"
 
 const LinkItems = [
-  { name: 'Dashboard', icon: FiHome },
-  { name: 'Products', icon: FiTrendingUp },
-  { name: 'Order', icon: FiCompass },
-  { name: 'Admins', icon: FiStar },
-  { name: 'Settings', icon: FiSettings },
+  { name: 'Dashboard', icon: FiHome ,path:"/dashboard"},
+  { name: 'Products', icon: FiTrendingUp,path:"/adminproduct" },
+  { name: 'Order', icon: FiCompass,path:"/adminorder" },
+  { name: 'Admins', icon: FiStar,path:"/adminprofile" },
+  { name: 'Settings', icon: FiSettings,path:"/adminproduct" },
 ];
 
 export default function AdminSideBar({ children }) {
@@ -84,7 +84,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem key={link.name} icon={link.icon} path={link.path}>
           {link.name}
         </NavItem>
       ))}
@@ -93,9 +93,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
 };
 
 
-const NavItem = ({ icon, children, ...rest }) => {
+const NavItem = ({ icon,path, children, ...rest }) => {
   return (
-    <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <Link to={path} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
       <Flex
     
         align="center"

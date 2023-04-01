@@ -17,6 +17,12 @@ export const reducer = (state = initialState, action) => {
     case types.REQUEST_ERROR: {
       return { ...state, isLoading: false, isError: true };
     }
+    case types.SINGLEDATASUCCESS: {
+      return { isLoading: false, products: payload };
+    }
+    case types.ADD_PRODUCT_REQUEST: {
+      return { isLoading: false, cart: payload };
+    }
     default: {
       return state;
     }

@@ -1,8 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import './Login.css'
 import { FcGoogle } from 'react-icons/fc'
+import { BsApple } from 'react-icons/bs'
+import { GoKey } from 'react-icons/go'
 
-import { useState } from "react"
+
+
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { userLogin } from "../Redux/AuthReducer/action"
 
 const initialState = {
     email: '',
@@ -11,7 +17,15 @@ const initialState = {
 
 export const Login = () => {
     const [loginData, setLoginData] = useState(initialState)
-
+    const dispatch = useDispatch()
+    const selector=useSelector((store)=>{
+        return store.authReducer.isAuth
+    })
+    useEffect(()=>{
+        if(dispatch){
+            <Navigate to='' />
+        }
+    },[])
     const handleChange = (e) => {
         const { name, value } = e.target
         setLoginData((prev) => {
@@ -20,7 +34,8 @@ export const Login = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(loginData)
+        dispatch(userLogin(loginData))
+        // console.log(loginData)
     }
 
     const { email, password } = loginData
@@ -41,14 +56,14 @@ export const Login = () => {
                 </div>
 
                 <button className="passkeyButton">
-                    {/* <GoKey className="fonticon" /> */}
+                    <GoKey className="fonticon" />
                     <Link>
                         Sign In with a Passkey
                     </Link>
                 </button>
 
                 <button className="appleButton">
-                    {/* <BsApple className="fonticon" /> */}
+                    <BsApple className="fonticon" />
                     <Link>
                         Sign in With Apple
                     </Link>
@@ -71,7 +86,7 @@ export const Login = () => {
                 <hr style={{ width: '100%' }} />
                 <div className="createAccount">
                     <h5>Don't have an account?</h5>
-                    <Link className="link">Create an account</Link>
+                    <Link className="link" to={'./createaccount'}>Create an account</Link>
                 </div>
             </form>
         </div>

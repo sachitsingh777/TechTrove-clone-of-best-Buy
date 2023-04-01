@@ -3,7 +3,7 @@ import "./Cart.css"
 import { AiTwotoneTag, AiOutlineGift } from 'react-icons/ai'
 export const Cart = () => {
     return (
-        <div>
+        <div className="parentdiv">
             <div style={{ display: "flex", height: '70px', justifyContent: "space-evenly", backgroundColor: 'rgba(240,242,244)' }}>
                 <img src="https://www.bestbuy.com/~assets/bby/_com/updated-microsoft-image-ea7d2787f444188a223e599cf09fc63b.jpg" />
                 <div>
@@ -61,28 +61,32 @@ export const Cart = () => {
                     <hr></hr>
                     <h5>Apply today,shop today.</h5>
                     <div>
-                        <img src="https://www.bestbuy.com/~assets/bby/_com/MBBCC_MBBVC_Contactless_Dual_Yellow_Edge_RGB-a32c353844fb660dd08157fcccf95d42.png"></img>
-                        <p>
-                            <h6>10%back in reward</h6>
-                            on your first day of purchases when approved for the My Best Buy® Credit Card.
-                        </p>
-                        <p>
-                            <h6>$104.63/month*</h6>
-                            suggested monthly payments with
-                            <h6>12 month financing</h6>
-                            on this purchase of $1,255.50
-                        </p>
+                        <div>
+                            <img src="https://www.bestbuy.com/~assets/bby/_com/MBBCC_MBBVC_Contactless_Dual_Yellow_Edge_RGB-a32c353844fb660dd08157fcccf95d42.png"></img>
+                        </div>
+                        <div>
+                            <p>
+                                <h6>10%back in reward</h6>
+                                on your first day of purchases when approved for the My Best Buy® Credit Card.
+                            </p>
+                            <p>
+                                <h6>$104.63/month*</h6>
+                                suggested monthly payments with
+                                <h6>12 month financing</h6>
+                                on this purchase of $1,255.50
+                            </p>
+                        </div>
                     </div>
                     <hr></hr>
-                    <div>
+                    <div className="gift">
                         <h2>
                             Looking for a lease to own option?
                         </h2>
                         <p>Enjoy the tech you want today</p>
                     </div>
-                    <div>
-                        <h2>
-                            <AiOutlineGift />
+                    <div className="gift">
+                        <h2 style={{display:'flex'}}>
+                            <AiOutlineGift  />
                             Buying a gift for someone special?
                         </h2>
                         <p>Gift options can be added in checkout. </p>

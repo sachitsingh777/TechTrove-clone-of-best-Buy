@@ -33,12 +33,15 @@ const navigate=useNavigate()
           email,password
       }
       dispatch(Adminlogin(userData)).then(()=>{
-        navigate(location.state,{replace:true})
+        navigate("/dashboard")
       })
       
       setEmail('')
       setPassword('')
   }
+  // if(auth){
+  //   navigate("/dashboard")
+  // }
   return (
     <Flex h="100vh" alignItems="center" justifyContent="center">
       <Flex
@@ -48,7 +51,7 @@ const navigate=useNavigate()
         borderRadius={8}
         boxShadow="lg"
       >
-        <Heading mb={6}>Log In</Heading>
+        <Heading mb={6}>Admin Log In</Heading>
         <Input
           placeholder="Enter Your Email"
           type="email"

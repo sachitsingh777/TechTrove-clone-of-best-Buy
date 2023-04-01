@@ -27,13 +27,15 @@ import {
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import {Link} from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux';
+import { AdminLogout } from '../AdminRedux/AdminAuthReducer/action';
 
 const LinkItems = [
   { name: 'Dashboard', icon: FiHome ,path:"/dashboard"},
   { name: 'Products', icon: FiTrendingUp,path:"/adminproduct" },
-  { name: 'Order', icon: FiCompass,path:"/adminorder" },
-  { name: 'Admins', icon: FiStar,path:"/adminprofile" },
-  { name: 'Settings', icon: FiSettings,path:"/adminproduct" },
+  { name: 'Order', icon: FiCompass,path:"/adminprofile" },
+  { name: 'Admins', icon: FiStar,path:"/admincreate" },
+
 ];
 
 export default function AdminSideBar({ children }) {
@@ -68,6 +70,14 @@ export default function AdminSideBar({ children }) {
 
 
 const SidebarContent = ({ onClose, ...rest }) => {
+  const dispatch=useDispatch()
+
+  const {auth}=useSelector(store=>store.adminAuthReducer)
+ const handleLogout=()=>{
+  
+    AdminLogout(dispatch)
+ }
+ console.log(auth)
   return (
     <Box
       bg={useColorModeValue('white', 'gray.900')}
@@ -88,6 +98,37 @@ const SidebarContent = ({ onClose, ...rest }) => {
           {link.name}
         </NavItem>
       ))}
+       <Link to={"#"} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+      <Flex
+    
+        align="center"
+        p="4"
+        mx="4"
+        borderRadius="lg"
+        role="group"
+        cursor="pointer"
+        _hover={{
+          bg: 'cyan.400',
+          color: 'white',
+        }}
+        onClick={handleLogout}
+        
+        >
+          <Icon
+            mr="4"
+            fontSize="35"
+            bg="#4fd1c5"
+            color="white"
+            borderRadius={10}
+            _groupHover={{
+              color: 'white',
+            }}
+            as={FiStar}
+          />
+        Logout
+        
+      </Flex>
+    </Link>
     </Box>
   );
 };

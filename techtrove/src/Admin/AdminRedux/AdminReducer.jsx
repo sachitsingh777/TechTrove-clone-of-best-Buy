@@ -1,4 +1,4 @@
-import { ADD_CART_ITEM, ADMIN_DELETE_PRODUCT, ADMIN_FAILURE, ADMIN_FILTER_PRODUCT, ADMIN_GET_PRODUCT, ADMIN_PATCH_PRODUCT, ADMIN_POST_PRODUCT, ADMIN_REQUEST, DELETE_CART_ITEM, GET_ADMIN_DATA, GET_ORDER_DATA, GET_USER_DATA, POST_ORDER_DATA, POST_USER_DATA, RESET_CART_ITEM } from "./ActionType"
+import { ADD_CART_ITEM, ADMIN_DELETE_PRODUCT, ADMIN_FAILURE, ADMIN_FILTER_PRODUCT, ADMIN_GET_PRODUCT, ADMIN_PATCH_PRODUCT, ADMIN_POST_PRODUCT, ADMIN_REQUEST, DELETE_CART_ITEM, GET_ADMIN_DATA, GET_ORDER_DATA, GET_USER_DATA, POST_ADMIN_DATA, POST_ORDER_DATA, POST_USER_DATA, RESET_CART_ITEM } from "./ActionType"
 
 const initialState = {
     loading: false,
@@ -33,8 +33,7 @@ const AdminReducer = (state = initialState, { type, payload }) => {
             }
         }
 
-        case ADMIN_POST_PRODUCT:
-            return { ...state, products: [payload, ...state.products] }
+        case ADMIN_POST_PRODUCT: return { ...state, products: [payload, ...state.products] }
 
         case GET_USER_DATA:
             return { ...state, user: payload }
@@ -55,11 +54,11 @@ const AdminReducer = (state = initialState, { type, payload }) => {
             return { ...state, cart: x }
         }
 
-        case RESET_CART_ITEM:
-            return { ...state, cart: [] }
+        case RESET_CART_ITEM: return { ...state, cart: [] }
 
-        case GET_ADMIN_DATA:
-            return { ...state, Admin: payload }
+        case GET_ADMIN_DATA: return { ...state, Admin: payload }
+
+        case POST_ADMIN_DATA: return { ...state, Admin: [payload, ...state.Admin] }
 
         default:
             return state

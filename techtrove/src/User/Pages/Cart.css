@@ -20,14 +20,13 @@ font-size: 13px;
     color: white;
     background-color: blue;
 }
-/* div {
-    border: 1px solid teal;
-} */
+
 .parentdiv{
     background-color: rgb(243, 246, 249);
 }
 .secondDiv{
     width: 70%;
+    background-color: white;
 }
 .yourCart {
     display: flex;
@@ -51,11 +50,18 @@ font-size: 13px;
 }
 .firstDiv{
     display: flex;
+    /* background-color: rgb(58, 145, 232); */
+
 }
 .orderSummary{
     /* text-align: center; */
     width: 30%;
-    gap: 100px;
+    background-color: white;
+    /* gap: 100px; */
+}
+.orderSummary>h2,p,Link,hr,h4,button,div>div{
+    margin-bottom: 10px;
+    padding: 10px;
 }
 .orderSummary>h2{
     text-align: center;
@@ -79,7 +85,7 @@ font-size: 13px;
 .orderSummary>button{
     cursor: pointer;
 }
-.orderSummary>button{
+.orderSummary>button{ 
     background-color: rgb(255,224,0);
     border-radius: 3px;
     border: none;
@@ -104,6 +110,14 @@ font-size: 13px;
 .orderSummary>div{
     display: flex;
 }
-.orderSummary>div>img{
-    width: 10%;
+.orderSummary>div>div{
+    width: 30%;
+}
+.orderSummary>div>div~div{
+    width: 70%;
+}
+.gift{
+    display: flex;
+    flex-direction: column;
+    /* marginr; */
 }

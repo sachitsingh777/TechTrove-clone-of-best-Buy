@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { addProduct } from '../Redux/productReducer/action'
+import { AdminAddProduct } from '../AdminRedux/Action'
+
 const initialState = {
     imgUrl: '',
     title: '',
@@ -26,7 +27,7 @@ const Admin = () => {
    }
     const handleSubmit=(e)=>{
     e.preventdefault()
-    dispatch(addProduct(product))
+    dispatch(AdminAddProduct(product))
     setproduct(initialState)
  }
    

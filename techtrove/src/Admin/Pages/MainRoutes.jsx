@@ -5,17 +5,29 @@ import AdminLogin from "./AdminLogin"
 import AdminProfile from "./AdminProfile"
 import AdminCreate from "./AdminCreate"
 import AdminProduct from "./AdminProduct"
-import AdminHome from "../Admin/AdminHome"
+import AdminSideBar from '../AdminComponent/AdminSideBar'
 const MainRoutes = () => {
   return (
     <>
     
     <Routes>
-   <Route path="/dashboard" element={<AdminHome/>}/>
+   <Route path="/dashboard" element={
+    <AdminSideBar>
+   <Dashboard/></AdminSideBar>
+   }/>
    <Route path="/adminlogin" element={<AdminLogin/>}/>
-   <Route path="/adminprofile" element={<AdminProfile/>}/>
-   <Route path="/adminproduct" element={<AdminProduct/>} />
-   <Route path="/admincreate" element={<AdminCreate/>}/>
+   <Route path="/adminprofile" element={
+    <AdminSideBar>
+   <AdminProfile/></AdminSideBar>
+   }/>
+   <Route path="/adminproduct" element={
+    <AdminSideBar>
+   <AdminProduct/></AdminSideBar>
+   } />
+   <Route path="/admincreate" element={
+    <AdminSideBar>
+   <AdminCreate/></AdminSideBar>
+   }/>
     </Routes>
     
   </>

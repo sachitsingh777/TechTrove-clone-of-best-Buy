@@ -49,25 +49,25 @@ function EditProduct({ item }) {
   const [formData, setFormData] = useState({
     title: item.title,
     price: item.price,
-    selectedImage: item.src,
+    Image: item.imgUrl,
   });
 
   const upload = (event) => {
     setFormData((prevData) => ({
       ...prevData,
-      selectedImage: URL.createObjectURL(event.target.files[0]),
+      Image: URL.createObjectURL(event.target.files[0]),
     }));
   };
 
   const removeImage = () => {
-    setFormData((prevData) => ({ ...prevData, selectedImage: item.src }));
+    setFormData((prevData) => ({ ...prevData, selectedImage: item.imgUrl}));
   };
 
   const handleSubmit = () => {
     const changes = {
       title: formData.title,
       price: formData.price,
-      src: formData.selectedImage,
+      Image: formData.selectedImage,
     };
     dispatch(AdminUpdateProduct(item.id, changes));
   };
@@ -159,11 +159,11 @@ function EditProduct({ item }) {
                   alt="not found"
                   width={"100px"}
                   h={"100px"}
-                  src={formData.selectedImage}
+                  src={formData.Image}
                 />
                 <Stack>
-                  <input type="file" name="myImage" onChange={upload} />
-                  {formData.selectedImage ? (
+                  <input type="file" name="Image" onChange={upload} />
+                  {formData.Image ? (
                     <Button onClick={removeImage}>Remove</Button>
                   ) : null}
                 </Stack>

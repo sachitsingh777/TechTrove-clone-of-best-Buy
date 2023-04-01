@@ -32,7 +32,7 @@ import axios from 'axios';
 import useThrottle from '../hook/useThrottle';
 import EditProduct from '../AdminComponent/EditProduct';
 import { useSearchParams } from 'react-router-dom';
-import AdminSideBar from '../AdminComponent/AdminSideBar'
+
 
 
 const AdminProduct = () => {
@@ -47,7 +47,7 @@ const AdminProduct = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
   const [searchParams,setSearchParams]=useSearchParams([])
   const initialCategory=searchParams.getAll("category")
-   
+  const { products } = useSelector(store => store.AdminReducer)
   const initialSort=searchParams.getAll("order")
   const [order,setOrder]=useState(initialSort||"")
 
@@ -76,7 +76,7 @@ const AdminProduct = () => {
  }
 
 
-  const { products } = useSelector(store => store.AdminReducer)
+ 
   useEffect(() => {
     setlisting('')
     setLoading(true)
@@ -93,11 +93,8 @@ const AdminProduct = () => {
  },[category,order])
   return (
     <>
-    <Box>
-      <Flex>
-       <Box>
-        <AdminSideBar/>
-       </Box>
+  
+      
        <Box>
       <Box>
         <Flex
@@ -180,8 +177,7 @@ const AdminProduct = () => {
        
      </Grid>}
      </Box>
-      </Flex>
-      </Box>
+      
     </>
   )
 }

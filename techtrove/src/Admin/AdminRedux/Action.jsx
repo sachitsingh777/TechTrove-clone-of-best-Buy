@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ADMIN_DELETE_PRODUCT, ADMIN_FAILURE, ADMIN_FILTER_PRODUCT, ADMIN_GET_PRODUCT, ADMIN_PATCH_PRODUCT, ADMIN_POST_PRODUCT, ADMIN_REQUEST, GET_ORDER_DATA, GET_USER_DATA, POST_USER_DATA } from './ActionType'
+import { ADMIN_DELETE_PRODUCT, ADMIN_FAILURE, ADMIN_FILTER_PRODUCT, ADMIN_GET_PRODUCT, ADMIN_PATCH_PRODUCT, ADMIN_POST_PRODUCT, ADMIN_REQUEST, GET_ADMIN_DATA, GET_ORDER_DATA, GET_USER_DATA, POST_ADMIN_DATA, POST_ORDER_DATA, POST_USER_DATA } from './ActionType'
 
 
 
@@ -29,11 +29,11 @@ export const AdminUpdateProduct = (id, updateData) => (dispatch) => {
             }
         })
         .catch(error => {
-            console.log(error)
+            dispatch({ type: ADMIN_FAILURE })
         })
 }
 
-export const AddProduct = (details) => (dispatch) => {
+export const AdminAddProduct = (details) => (dispatch) => {
     axios.post(`https://json-server-bestbuy.onrender.com/products`, details)
         .then(res => {
             if (res.data) {
@@ -41,7 +41,7 @@ export const AddProduct = (details) => (dispatch) => {
             }
         })
         .catch(error => {
-            console.log(error)
+            dispatch({ type: ADMIN_FAILURE })
         })
 }
 
@@ -64,13 +64,13 @@ export const PostUserData = (details) => (dispatch) => {
             }
         })
         .catch(error => {
-            console.log(error)
+            dispatch({ type: ADMIN_FAILURE })
         })
 }
 
 export const GetOrdersData = () => (dispatch) => {
     dispatch({ type:ADMIN_REQUEST })
-    axios.get(`https://63f5d74059c944921f678f16.mockapi.io/OrderData`)
+    axios.get(`https://63f5d74059c944921f678f16.mockapi.io/OrderDetail`)
         .then(res => {
             dispatch({ type: GET_ORDER_DATA, payload: res.data })
         })
@@ -80,13 +80,39 @@ export const GetOrdersData = () => (dispatch) => {
 }
 
 export const PostOrdersData = (details) => (dispatch) => {
-    axios.post(`https://63f5d74059c944921f678f16.mockapi.io/OrderData`, details)
+    axios.post(`https://63f5d74059c944921f678f16.mockapi.io/OrderDetail`, details)
         .then(res => {
             if (res.data) {
-                dispatch({ type: types.POSTORDERSDATA, payload: res.data })
+                dispatch({ type:POST_ORDER_DATA, payload: res.data })
             }
         })
         .catch(error => {
-            console.log(error)
+            dispatch({ type: ADMIN_FAILURE })
         })
 }
+
+export const PostAdminData = (details) => (dispatch) => {
+    axios.post(`https://63f5d74059c944921f678f16.mockapi.io/AdminUser`, details)
+        .then(res => {
+            if (res.data) {
+                dispatch({ type: POST_ADMIN_DATA, payload: res.data })
+            }
+        })
+        .catch(error => {
+            dispatch({ type: ADMIN_FAILURE })
+        })
+}
+
+export const GetAdminData = () => (dispatch) => {
+    dispatch({ type:ADMIN_REQUEST })
+    axios.get(`https://63f5d74059c944921f678f16.mockapi.io/AdminUser`)
+        .then(res => {
+            dispatch({ type: GET_ADMIN_DATA, payload: res.data })
+        })
+        .catch(error => {
+            dispatch({ type: ADMIN_FAILURE })
+        })
+}
+
+
+

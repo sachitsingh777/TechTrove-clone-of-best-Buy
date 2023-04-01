@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useSearchParams, useLocation } from "react-router-dom";
 import axios from "axios";
-// import styled from "styled-components";
+import styled from "styled-components";
 import Productscard from "../Components/Productscard";
 import { getData } from "../Redux/productReducer/action";
 import {
@@ -16,6 +16,14 @@ import {
   MenuDivider,
   Button,
 } from "@chakra-ui/react";
+const H4 = styled.h3`
+  font-size: 20px;
+  font-weight: 800;
+`;
+const H6 = styled.h3`
+  font-size: 17px;
+  font-weight: 600;
+`;
 
 // export const Container = styled.div`
 //   background-color: #fed9ff;
@@ -46,7 +54,7 @@ const Productspage = () => {
 
   const getLength = async () => {
     const data = await axios.get(
-      "https://json-server-bestbuy.onrender.com/products"
+      "https://beautiful-calf-wear.cyclic.app/products"
     );
     setTotal(data.data.length);
     // console.log("fgghhjh", data.data.length);
@@ -174,8 +182,8 @@ const Productspage = () => {
             overflowY: "scroll",
           }}
         >
-          <h4>Filtering products</h4>
-          <h2>Filter by Brand</h2>
+          <H4>Filtering products</H4>
+          <H6>Filter by Brand</H6>
           <input
             type="checkbox"
             value={"Amazon"}
@@ -246,7 +254,7 @@ const Productspage = () => {
           <label htmlFor=""> Toshiba</label>
           <br />
           <hr />
-          <h6>Filter by Rating</h6>
+          <H6>Filter by Rating</H6>
           <input
             type="checkbox"
             value={"⭐⭐⭐⭐⭐"}
@@ -289,7 +297,7 @@ const Productspage = () => {
           <br />
 
           <hr />
-          <h6>Filter by Category</h6>
+          <H6>Filter by Category</H6>
           {/* TV,phone,electronic,laptop, */}
           <input
             type="checkbox"

@@ -3,10 +3,10 @@ import React from "react";
 
 const HomeCard2 = ({ imgUrl, title, rate, price, save }) => {
   return (
-    <Box p={"10px"} alignItems={"center"}>
-      <Image src={imgUrl} alt="product image" h="14rem" width={"100%"} />
+    <Box p={"10px"} alignItems={"center"} width="400px"  _hover={{ cursor:"pointer"}}>
+      <Image src={imgUrl} alt="product image" height={"14rem"} width={"100%"} />
 
-      <Text fontSize="xs" color={"#0046be"}>
+      <Text fontSize="xs" color={"#0046be"} _hover={{textDecoration:"underline", cursor:"pointer"}}>
         {title}{" "}
       </Text>
       <Text fontSize="xs" color={"#f3eb53"}>

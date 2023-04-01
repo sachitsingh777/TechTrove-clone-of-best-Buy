@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useSearchParams } from "react-router-dom";
 import { CreateAccount } from "../Pages/CreateAccount";
 
 

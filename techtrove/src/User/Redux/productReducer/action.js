@@ -1,3 +1,5 @@
+
+
 import * as types from "./action.types";
 import axios from "axios";
 // import { MdOutlineEmojiObjects } from "react-icons/md";
@@ -19,3 +21,4 @@ export const getData = (obj, sort, reset, page) => async (dispatch) => {
     dispatch({ type: types.REQUEST_ERROR, payload: error.message });
   }
 };
+

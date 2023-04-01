@@ -18,12 +18,15 @@ import {
 } from "react-icons/bs";
 import { AiFillTwitterCircle } from "react-icons/ai";
 
-
-
 const Footer = () => {
   return (
     <>
-      <Box bgColor={"#f0f2f4"} p="1rem 2rem 2rem 2rem" lineHeight={"2.2rem"}>
+      <Box
+        zIndex={999}
+        bgColor={"#f0f2f4"}
+        p="1rem 2rem 2rem 2rem"
+        lineHeight={"2.2rem"}
+      >
         <HStack gap={"9rem"}>
           <Box>
             <Heading as="h5" size="sm" color={"black"}>
@@ -165,7 +168,6 @@ const Footer = () => {
                     placeholder="Enter Email Address"
                     textColor={"black"}
                     border={"1px solid gray"}
-                    
                   />
                   <Button colorScheme="blue">Sign Up</Button>
                 </Flex>
@@ -187,7 +189,7 @@ const Footer = () => {
                   <BsYoutube style={{ fontSize: "1.5rem" }} />
                 </Flex>
               </Box>
-              
+
               <Box>
                 <Text color={"#0457c8"} fontSize="sm">
                   {" "}

@@ -1,34 +1,36 @@
-import React from 'react'
-import { Flex,
+import React from "react";
+import {
+  Flex,
   Box,
   Grid,
-   SimpleGrid,
-    Text,
-   useColorModeValue ,
-    Progress,Stat,
+  SimpleGrid,
+  Text,
+  useColorModeValue,
+  Progress,
+  Stat,
   StatHelpText,
   StatLabel,
   StatNumber,
 } from "@chakra-ui/react";
-import Card from "../AdminComponent/Card/Card"
-import CardBody from "../AdminComponent/Card/CardBody"
-import CardHeader from "../AdminComponent/Card/CardHeader"
-import LineChart from "../AdminComponent/Charts/LineChart"
-import BarChart from "../AdminComponent/Charts/BarChart"
+import Card from "../AdminComponent/Card/Card";
+import CardBody from "../AdminComponent/Card/CardBody";
+import CardHeader from "../AdminComponent/Card/CardHeader";
+import LineChart from "../AdminComponent/Charts/LineChart";
+import BarChart from "../AdminComponent/Charts/BarChart";
 import {
   CartIcon,
   DocumentIcon,
   GlobeIcon,
   WalletIcon,
   RocketIcon,
-  StatsIcon
+  StatsIcon,
 } from "../AdminComponent/Icons/Icons";
 import IconBox from "../AdminComponent/Icons/IconBox";
 const Dashboard = () => {
   const iconBoxInside = useColorModeValue("white", "white");
   return (
-    <Flex flexDirection='column' pt={{ base: "120px", md: "75px" }} >
-        <SimpleGrid columns={{ sm: 1, md: 2, xl: 4 }} spacing='24px'>
+    <Flex flexDirection="column" pt={{ base: "120px", md: "75px" }}>
+      <SimpleGrid columns={{ sm: 1, md: 2, xl: 4 }} spacing="24px">
         <MiniStatistics
           title={"Today's Moneys"}
           amount={"$53,000"}
@@ -53,12 +55,13 @@ const Dashboard = () => {
           percentage={8}
           icon={<CartIcon h={"24px"} w={"24px"} color={iconBoxInside} />}
         />
-        </SimpleGrid>
-        <Grid
+      </SimpleGrid>
+      <Grid
         templateColumns={{ sm: "1fr", lg: "1.3fr 1.7fr" }}
         templateRows={{ sm: "repeat(2, 1fr)", lg: "1fr" }}
-        gap='24px'
-        mb={{ lg: "26px" }}>
+        gap="24px"
+        mb={{ lg: "26px" }}
+      >
         <ActiveUsers
           title={"Active Users"}
           percentage={23}
@@ -70,43 +73,55 @@ const Dashboard = () => {
           chart={<LineChart />}
         />
       </Grid>
-
     </Flex>
+
   )
 }
+
+export default Dashboard
+
+
+
+
+
+
+
+
 const MiniStatistics = ({ title, amount, percentage, icon }) => {
   const iconTeal = useColorModeValue("teal.300", "teal.300");
   const textColor = useColorModeValue("gray.700", "white");
 
   return (
-    <Card minH='83px'>
+    <Card minH="83px">
       <CardBody>
-        <Flex flexDirection='row' align='center' justify='center' w='100%'>
-          <Stat me='auto'>
+        <Flex flexDirection="row" align="center" justify="center" w="100%">
+          <Stat me="auto">
             <StatLabel
-              fontSize='sm'
-              color='gray.400'
-              fontWeight='bold'
-              pb='.1rem'>
+              fontSize="sm"
+              color="gray.400"
+              fontWeight="bold"
+              pb=".1rem"
+            >
               {title}
             </StatLabel>
             <Flex>
-              <StatNumber fontSize='lg' color={textColor}>
+              <StatNumber fontSize="lg" color={textColor}>
                 {amount}
               </StatNumber>
               <StatHelpText
-                alignSelf='flex-end'
-                justifySelf='flex-end'
-                m='0px'
+                alignSelf="flex-end"
+                justifySelf="flex-end"
+                m="0px"
                 color={percentage > 0 ? "green.400" : "red.400"}
-                fontWeight='bold'
-                ps='3px'
-                fontSize='md'>
+                fontWeight="bold"
+                ps="3px"
+                fontSize="md"
+              >
                 {percentage > 0 ? `+${percentage}%` : `${percentage}%`}
               </StatHelpText>
             </Flex>
           </Stat>
-          <IconBox as='box' h={"45px"} w={"45px"} bg={iconTeal}>
+          <IconBox as="box" h={"45px"} w={"45px"} bg={iconTeal}>
             {icon}
           </IconBox>
         </Flex>
@@ -115,24 +130,24 @@ const MiniStatistics = ({ title, amount, percentage, icon }) => {
   );
 };
 
-
 const ActiveUsers = ({ title, percentage, chart }) => {
   const iconBoxInside = useColorModeValue("white", "white");
   const textColor = useColorModeValue("gray.700", "white");
   return (
-    <Card p='16px'>
+    <Card p="16px">
       <CardBody>
-        <Flex direction='column' w='100%'>
+        <Flex direction="column" w="100%">
           {chart}
-          <Flex direction='column' mt='24px' mb='36px' alignSelf='flex-start'>
-            <Text fontSize='lg' color={textColor} fontWeight='bold' mb='6px'>
+          <Flex direction="column" mt="24px" mb="36px" alignSelf="flex-start">
+            <Text fontSize="lg" color={textColor} fontWeight="bold" mb="6px">
               {title}
             </Text>
-            <Text fontSize='md' fontWeight='medium' color='gray.400'>
+            <Text fontSize="md" fontWeight="medium" color="gray.400">
               <Text
-                as='span'
+                as="span"
                 color={percentage > 0 ? "green.400" : "red.400"}
-                fontWeight='bold'>
+                fontWeight="bold"
+              >
                 {percentage > 0 ? `+${percentage}%` : `-${percentage}%`}
               </Text>{" "}
               than last week
@@ -176,22 +191,22 @@ const ChartStatistics = ({ title, amount, icon, percentage }) => {
   const textColor = useColorModeValue("gray.700", "white");
   const overlayRef = React.useRef();
   return (
-    <Flex direction='column'>
-      <Flex alignItems='center'>
-        <IconBox as='box' h={"30px"} w={"30px"} bg={iconTeal} me='6px'>
+    <Flex direction="column">
+      <Flex alignItems="center">
+        <IconBox as="box" h={"30px"} w={"30px"} bg={iconTeal} me="6px">
           {icon}
         </IconBox>
-        <Text fontSize='sm' color='gray.400' fontWeight='semibold'>
+        <Text fontSize="sm" color="gray.400" fontWeight="semibold">
           {title}
         </Text>
       </Flex>
-      <Text fontSize='lg' color={textColor} fontWeight='bold' mb='6px' my='6px'>
+      <Text fontSize="lg" color={textColor} fontWeight="bold" mb="6px" my="6px">
         {amount}
       </Text>
       <Progress
-        colorScheme='teal'
-        borderRadius='12px'
-        h='5px'
+        colorScheme="teal"
+        borderRadius="12px"
+        h="5px"
         value={percentage}
       />
     </Flex>
@@ -201,27 +216,28 @@ const ChartStatistics = ({ title, amount, icon, percentage }) => {
 const SalesOverview = ({ title, percentage, chart }) => {
   const textColor = useColorModeValue("gray.700", "white");
   return (
-    <Card p='28px 10px 16px 0px' mb={{ sm: "26px", lg: "0px" }}>
-      <CardHeader mb='20px' pl='22px'>
-        <Flex direction='column' alignSelf='flex-start'>
-          <Text fontSize='lg' color={textColor} fontWeight='bold' mb='6px'>
+    <Card p="28px 10px 16px 0px" mb={{ sm: "26px", lg: "0px" }}>
+      <CardHeader mb="20px" pl="22px">
+        <Flex direction="column" alignSelf="flex-start">
+          <Text fontSize="lg" color={textColor} fontWeight="bold" mb="6px">
             {title}
           </Text>
-          <Text fontSize='md' fontWeight='medium' color='gray.400'>
+          <Text fontSize="md" fontWeight="medium" color="gray.400">
             <Text
-              as='span'
+              as="span"
               color={percentage > 0 ? "green.400" : "red.400"}
-              fontWeight='bold'>
+              fontWeight="bold"
+            >
               {`${percentage}%`} more
             </Text>{" "}
             in 2021
           </Text>
         </Flex>
       </CardHeader>
-      <Box w='100%' h={{ sm: "300px" }} ps='8px'>
+      <Box w="100%" h={{ sm: "300px" }} ps="8px">
         {chart}
       </Box>
     </Card>
   );
 };
-export default Dashboard
+

@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Route, Routes, useSearchParams } from "react-router-dom";
 import Home from "../Pages/Home";
 import Productspage from "../Pages/Productspage";
@@ -11,9 +12,6 @@ const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-
-      <Route path="/products" element={<Productspage />} />
-
       <Route path="/cart" />
       <Route path="/products" element={<Productspage />} />
       <Route path="/products/:id" element={<Singleproductpage />} />

@@ -9,7 +9,7 @@ function App() {
       <Navbar />
       <AllRoutes />
       <Footer />
-       
+
     </>
   )}
 export default App;

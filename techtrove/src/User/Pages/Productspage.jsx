@@ -24,17 +24,6 @@ const H6 = styled.h3`
   font-size: 17px;
   font-weight: 600;
 `;
-
-// export const Container = styled.div`
-//   background-color: #fed9ff;
-//   width: 20%;
-//   overflow-y: scroll
-//   text-align: center;
-//   height: "100px";
-//   overflowY: "scroll"
-//   padding: 20px;
-// `;
-//GET /posts?title=json-server&author=typicode
 const Productspage = () => {
   const data = useSelector((store) => store.productreducer.products);
   const dispatch = useDispatch();

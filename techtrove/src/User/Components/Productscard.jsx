@@ -1,26 +1,14 @@
-import React from "react";
-import styled from "styled-components";
 import axios from "axios";
-import { Button } from "@chakra-ui/react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-const Container = styled.div`
-  display: flex;
-  border: 0px solid red;
-  height: 250px;
-  width: 900px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-    padding:"10px"
-  gap: 30px;
-`;
-const H4 = styled.h3`
-  font-size: 20px;
-  font-weight: 800;
-`;
-const H6 = styled.h3`
-  font-size: 17px;
-  font-weight: 600;
-`;
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Image,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 const Productscard = ({
   imgUrl,
   title,
@@ -36,12 +24,11 @@ const Productscard = ({
   p2,
 }) => {
   const divert = useNavigate();
-  const Button = {
-    backgroundColor: "yellow",
-  };
+
   const handleRoute = () => {
     divert(`/products/${id}`);
   };
+
   const Addcart = async () => {
     let newobj = {
       imgUrl,
@@ -64,46 +51,56 @@ const Productscard = ({
     );
     console.log(data.data);
   };
+
   return (
-    <Container>
-      <div style={{ width: "30%" }} onClick={handleRoute}>
-        <img src={imgUrl} alt={id} />
-      </div>
-      <div style={{ padding: "2", width: "40%" }} onClick={handleRoute}>
-        <H4>{title}</H4>
-        <H6>{brand}</H6>
-        <p>{`${rate}(${review})`}</p>
-        <p>{`Pickup:${
-          p1 ? p1 : "Order now for pickup on Wed, Apr 19 at Aiea"
-        }`}</p>
-        <p>{`Online:${p2 ? p2 : "Not Available"}`}</p>
-      </div>
-      <div
-        style={{
-          width: "30%",
-          alignItems: "center",
-          margin: "auto",
-          border: "0px solid black",
-          justifyContent: "center",
-        }}
+    <Flex
+      direction={{ base: "column", md: "row" }}
+      border="1px solid #E2E8F0"
+      borderRadius="md"
+      mb={4}
+      p={4}
+    >
+      <Box w={{ base: "100%", md: "30%" }} mr={{ md: 4 }} onClick={handleRoute}>
+        <Image src={imgUrl} alt={id} />
+      </Box>
+
+      <Stack w={{ base: "100%", md: "40%" }} onClick={handleRoute} spacing={2}>
+        <Heading as="h4" size="md">
+          {title}
+        </Heading>
+        <Text color="gray.500" fontSize="sm">
+          {brand}
+        </Text>
+        <Text>{`${rate}(${review})`}</Text>
+        <Text>
+          {`Pickup:${p1 ? p1 : "Order now for pickup on Wed, Apr 19 at Aiea"}`}
+        </Text>
+        <Text>{`Online:${p2 ? p2 : "Not Available"}`}</Text>
+      </Stack>
+
+      <Flex
+        w={{ base: "100%", md: "30%" }}
+        alignItems="center"
+        justifyContent="space-between"
+        mt={{ base: 4, md: 0 }}
       >
-        <H4>${price}</H4>
-        <button
+        <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold">
+          ${price}
+        </Text>
+        <Button
+          bg="yellow.400"
+          color="white"
+          fontWeight="bold"
+          borderRadius="md"
+          px={{ base: 2, md: 4 }}
+          py={{ base: 1, md: 2 }}
+          fontSize={{ base: "sm", md: "md" }}
           onClick={Addcart}
-          style={{
-            backgroundColor: "yellow",
-            padding: "3px",
-            fontSize: "14px",
-            fontWeight: "700",
-            width: "50%",
-            borderRadius: "10px",
-          }}
         >
           Add to cart
-        </button>
-      </div>
-    </Container>
+        </Button>
+      </Flex>
+    </Flex>
   );
 };
-
 export default Productscard;

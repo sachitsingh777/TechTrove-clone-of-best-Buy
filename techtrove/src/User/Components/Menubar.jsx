@@ -23,9 +23,11 @@ const Menubar = () => {
     <>
       <Box
         bgColor={"#0046be"}
+       
         p="0.8rem"
         boxShadow=" 0px 7px 7px -5px rgba(120,108,120,0.2)" 
        display={{base:"none",md:"none" ,lg:"block"}}
+       maxH={"3rem"}
       >
         <Flex gap="0.5rem" justify={"space-around"} >
           <Box display={"flex"} gap="2.5rem" mr={"2rem"}>

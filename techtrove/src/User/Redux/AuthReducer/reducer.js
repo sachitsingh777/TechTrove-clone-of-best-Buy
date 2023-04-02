@@ -7,7 +7,7 @@ const initialState={
     
 }
 export const reducer=(state=initialState,{type,payload})=>{
-    console.log(state)
+    // console.log(state)
     switch(type){
         case CREATE_ACCOUNT: return({...state,accountCreatedSuccessfull:true})
         case LOGIN_SUCCESSFULL: return ({isAuth:true,userDetails:payload})

@@ -23,6 +23,7 @@ import { Button,
     MenuGroup,
     MenuOptionGroup,
     MenuDivider,
+    useColorModeValue
   } from '@chakra-ui/react'
   import { SearchIcon, AddIcon, RepeatIcon } from "@chakra-ui/icons";
 import React, { useEffect,useState } from 'react'
@@ -32,26 +33,29 @@ import axios from 'axios';
 import useThrottle from '../hook/useThrottle';
 import EditProduct from '../AdminComponent/EditProduct';
 import { useSearchParams } from 'react-router-dom';
+import AdminAddProduct from '../AdminComponent/AdminAddProduct';
 
 
 
 const AdminProduct = () => {
+  const [del,setDel]=useState(false)
+  const [searchParams,setSearchParams]=useSearchParams([])
   const dispatch = useDispatch()
+    const { products } = useSelector(store => store.AdminReducer)
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [searchValue, setSearchValue] = useState("");
-  const [selectedSortOption, setSelectedSortOption] = useState("");
   const [query, setQuery] = useState('')
-  const [listing, setlisting] = useState([])
-  const [loading, setLoading] = useState(false)
   const searchQuery = useThrottle(query, 1000)
   const isMobile = useBreakpointValue({ base: true, md: false });
-  const [searchParams,setSearchParams]=useSearchParams([])
+ 
   const initialCategory=searchParams.getAll("category")
-  const { products } = useSelector(store => store.AdminReducer)
+
   const initialSort=searchParams.getAll("order")
   const [order,setOrder]=useState(initialSort||"")
 
     const [category,setCategory]=useState(initialCategory||[])
+
+    const shadow = useColorModeValue(' 2px solid lightblue','1px solid white' );
+
   const handleChange=(e)=>{
     let newCategory=[...category]
     const value=e.target.value;
@@ -70,19 +74,21 @@ const AdminProduct = () => {
   let obj={
     params:{
         category:searchParams.getAll("category"),
-         
+        _sort:searchParams.get("order")&&"price",
+        _order:searchParams.get("order"),
 
       }
  }
-
+ const deleteProduct=()=>{
+ setDel(!del)
+ }
 
  
   useEffect(() => {
-    setlisting('')
-    setLoading(true)
+
     dispatch(AdminGetProduct(searchQuery,obj))
-    setLoading(false)
-  }, [searchQuery])
+ 
+  }, [searchQuery,category,order,del])
 
   useEffect(()=>{
     let params={
@@ -91,6 +97,7 @@ const AdminProduct = () => {
     order&&(params.order=order);
     setSearchParams(params)
  },[category,order])
+ console.log(products)
   return (
     <>
   
@@ -118,19 +125,19 @@ const AdminProduct = () => {
               <Spacer />
               <Select
                 placeholder="Sort by"
-                value={selectedSortOption}
-              
+               
+                onChange={handleSort}
                 maxW="xs"
                 ml={4}
               >
-                <option value="option1">Low to High</option>
-                <option value="option2">Option 2</option>
+                <option value="desc" >Low To High</option>
+                <option value="asc">High To Low</option>
 
               </Select>
               <Spacer />
               <Menu>
        <MenuButton as={Button} >
-    Actions
+    Filter
         </MenuButton>
       <MenuList>
     <MenuItem><Checkbox  value={"electronic"} onChange={handleChange} isChecked={category.includes("electronic")}>Electronic</Checkbox></MenuItem>
@@ -142,40 +149,32 @@ const AdminProduct = () => {
             </>
           )}
           <Spacer />
-          <IconButton
-            aria-label="Add item"
-            icon={<AddIcon />}
-            colorScheme="blue"
-            ml={isMobile ? 0 : 4}
-          />
-          <IconButton
-            aria-label="Reset filters"
-            icon={<RepeatIcon />}
-            colorScheme="gray"
-            ml={2}
-            // onClick={handleResetButtonClick}
-          />
+          <Flex>
+            
+          <AdminAddProduct/>
+          </Flex>
         </Flex>
       </Box>
           
-          {products&& <Grid templateColumns={{ sm: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }} p={"3"} gap={6}>
+          <Grid templateColumns={{ sm: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }} p={"3"} gap={6}>
        
         
-       {products.map((product) => (
-       <Flex>
-         <Image w={"100px"} h={"100px"} objectFit={"contain"} src={product.imgUrl} alt={product.title}/>
-         <Stack>
-                       <Text>{product.title.substr(0, 29)}...</Text>
-                       <Text>Price: {product.price}</Text>
+       {products?.map((product) => (
+        <Box boxShadow="white" border={shadow}key={product.id}>
+       <Flex  >
+         <Image m={3} w={"100px"} h={"100px"} objectFit={"contain"} src={product.imgUrl} alt={product.title}/>
+         <Stack mx={2}>
+                       <Text fontSize={"15px"} colorScheme={"black.300"}>{product.title.substr(0, 29)}...</Text>
+                       <Text fontSize={"15px"} colorScheme={"black.300"}>Price: ${product.price}</Text>
                        <Flex>
-                         <EditProduct item={product} />
+                         <EditProduct item={product} delData={deleteProduct} />
                        </Flex>
                      </Stack>
        </Flex>
-
+</Box>
        ))}
        
-     </Grid>}
+     </Grid>
      </Box>
       
     </>

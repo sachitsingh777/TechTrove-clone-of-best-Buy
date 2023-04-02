@@ -21,10 +21,8 @@ const AdminReducer = (state = initialState, { type, payload }) => {
         case ADMIN_FILTER_PRODUCT: return { ...state, products: payload, loading: false }
         
         case ADMIN_DELETE_PRODUCT: {
-            let update = state.products.filter((item) => {
-                return item.id !== payload.id
-            })
-            return { ...state, products: update }
+      
+            return { ...state,products:state.products.filter((item) =>  item.id !== payload.id) }
         }
         case ADMIN_PATCH_PRODUCT: {
             return {
@@ -48,10 +46,10 @@ const AdminReducer = (state = initialState, { type, payload }) => {
          case ADD_CART_ITEM:return { ...state, cart: [payload, ...state.cart] }
 
         case DELETE_CART_ITEM: {
-            let x = state.cart.filter((item) => {
+            let data = state.cart.filter((item) => {
                 return item.id !== payload.id
             })
-            return { ...state, cart: x }
+            return { ...state, cart: data }
         }
 
         case RESET_CART_ITEM: return { ...state, cart: [] }

@@ -43,7 +43,7 @@ import { AdminUpdateProduct,AdminDeleteProduct } from '../AdminRedux/Action';
 
 
 
-function EditProduct({ item }) {
+function EditProduct({ item,delData }) {
   const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [formData, setFormData] = useState({
@@ -67,45 +67,52 @@ function EditProduct({ item }) {
     const changes = {
       title: formData.title,
       price: formData.price,
-      Image: formData.selectedImage,
+      imgUrl: formData.Image,
     };
     dispatch(AdminUpdateProduct(item.id, changes));
   };
-
+  const delProduct=()=>{
+    dispatch(AdminDeleteProduct(item.id))
+    delData()
+  }
   return (
     <>
-      <Flex>
-        <Text
+      <Flex >
+        <Button
+        colorScheme='green'
           _hover={{ cursor: "pointer" }}
           textDecoration={"underline"}
           w={"60px"}
           h={"30px"}
           onClick={onOpen}
+          m={5}
         >
           Edit
-        </Text>
+        </Button>
         <Popover>
           <PopoverTrigger>
-            <Text
+            <Button
+            colorScheme='red'
               _hover={{ cursor: "pointer" }}
               textDecoration={"underline"}
               w={"60px"}
               h={"30px"}
+              m={5}
             >
               Delete
-            </Text>
+            </Button>
           </PopoverTrigger>
           <PopoverContent>
             <PopoverArrow />
             <PopoverCloseButton />
-            <PopoverHeader>Confirmation!</PopoverHeader>
+            <PopoverHeader>Delete permamently</PopoverHeader>
             <PopoverBody>
-              Are you sure you want to delete this product?
+             Delete the items? it will be permanently deleted from your data?
             </PopoverBody>
             <PopoverFooter>
               <Flex w={"100%"} justifyContent={"space-evenly"}>
                 <Button>No</Button>
-                <Button onClick={() => dispatch(AdminDeleteProduct(item.id))}>
+                <Button onClick={delProduct}>
                   Yes
                 </Button>
               </Flex>
@@ -156,7 +163,7 @@ function EditProduct({ item }) {
                 <Image
                   objectFit={"contain"}
                   borderRadius={"10px"}
-                  alt="not found"
+                  alt=""
                   width={"100px"}
                   h={"100px"}
                   src={formData.Image}

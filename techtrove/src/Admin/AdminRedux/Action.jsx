@@ -5,7 +5,7 @@ import { ADMIN_DELETE_PRODUCT, ADMIN_FAILURE, ADMIN_FILTER_PRODUCT, ADMIN_GET_PR
 
 export const AdminGetProduct = (value,paramObj) => (dispatch) => {
     dispatch({ type: ADMIN_REQUEST })
-     axios.get(`https://json-server-bestbuy.onrender.com/products?q=${value}`,paramObj)
+     axios.get(`https://beautiful-calf-wear.cyclic.app/products?q=${value}`,paramObj)
      .then(res=>dispatch({ type: ADMIN_GET_PRODUCT, payload: res.data }))
     .catch( error=>dispatch({ type:ADMIN_FAILURE }))
          
@@ -13,16 +13,19 @@ export const AdminGetProduct = (value,paramObj) => (dispatch) => {
 
 
 export const AdminDeleteProduct = (id) => (dispatch) => {
-    axios.delete(`https://json-server-bestbuy.onrender.com/${id}`)
+    console.log(id)
+    axios.delete(`https://beautiful-calf-wear.cyclic.app/products/${id}`)
       .then((res) => {
+        console.log(res.data)
         dispatch({ type: ADMIN_DELETE_PRODUCT, payload: res.data });
       })
       .catch((error) => {
         dispatch({ type: ADMIN_FAILURE, payload: error });
       });
   };
+
 export const AdminUpdateProduct = (id, updateData) => (dispatch) => {
-    axios.patch(`https://json-server-bestbuy.onrender.com/products/${id}`,updateData)
+    axios.patch(`https://beautiful-calf-wear.cyclic.app/products/${id}`,updateData)
         .then(res => {
             if (res.data) {
                 dispatch({ type:ADMIN_PATCH_PRODUCT, payload: res.data })
@@ -33,8 +36,8 @@ export const AdminUpdateProduct = (id, updateData) => (dispatch) => {
         })
 }
 
-export const AdminAddProduct = (details) => (dispatch) => {
-    axios.post(`https://json-server-bestbuy.onrender.com/products`, details)
+export const AdminAddProductData = (details) => (dispatch) => {
+  return  axios.post(`https://beautiful-calf-wear.cyclic.app/products`, details)
         .then(res => {
             if (res.data) {
                 dispatch({ type:ADMIN_POST_PRODUCT, payload: res.data })
@@ -47,7 +50,7 @@ export const AdminAddProduct = (details) => (dispatch) => {
 
 export const GetUserData = () => (dispatch) => {
     dispatch({ type: ADMIN_REQUEST })
-    axios.get(`https://63f5d74059c944921f678f16.mockapi.io/UserData`)
+    axios.get(`https://beautiful-calf-wear.cyclic.app/UserData`)
         .then(res => {
             dispatch({ type: GET_USER_DATA, payload: res.data })
         })
@@ -57,7 +60,7 @@ export const GetUserData = () => (dispatch) => {
 }
 
 export const PostUserData = (details) => (dispatch) => {
-    axios.post(`https://63f5d74059c944921f678f16.mockapi.io/UserData/`, details)
+    axios.post(`https://beautiful-calf-wear.cyclic.app/UserData/`, details)
         .then(res => {
             if (res.data) {
                 dispatch({ type: POST_USER_DATA, payload: res.data })
@@ -70,7 +73,7 @@ export const PostUserData = (details) => (dispatch) => {
 
 export const GetOrdersData = () => (dispatch) => {
     dispatch({ type:ADMIN_REQUEST })
-    axios.get(`https://63f5d74059c944921f678f16.mockapi.io/OrderDetail`)
+    axios.get(`https://beautiful-calf-wear.cyclic.app/OrderDetail`)
         .then(res => {
             dispatch({ type: GET_ORDER_DATA, payload: res.data })
         })
@@ -80,7 +83,7 @@ export const GetOrdersData = () => (dispatch) => {
 }
 
 export const PostOrdersData = (details) => (dispatch) => {
-    axios.post(`https://63f5d74059c944921f678f16.mockapi.io/OrderDetail`, details)
+    axios.post(`https://beautiful-calf-wear.cyclic.app/OrderDetail`, details)
         .then(res => {
             if (res.data) {
                 dispatch({ type:POST_ORDER_DATA, payload: res.data })
@@ -92,7 +95,7 @@ export const PostOrdersData = (details) => (dispatch) => {
 }
 
 export const PostAdminData = (details) => (dispatch) => {
-    axios.post(`https://63f5d74059c944921f678f16.mockapi.io/AdminUser`, details)
+    axios.post(`https://beautiful-calf-wear.cyclic.app//AdminUser`, details)
         .then(res => {
             if (res.data) {
                 dispatch({ type: POST_ADMIN_DATA, payload: res.data })
@@ -105,7 +108,7 @@ export const PostAdminData = (details) => (dispatch) => {
 
 export const GetAdminData = () => (dispatch) => {
     dispatch({ type:ADMIN_REQUEST })
-    axios.get(`https://63f5d74059c944921f678f16.mockapi.io/AdminUser`)
+    axios.get(`https://beautiful-calf-wear.cyclic.app//AdminUser`)
         .then(res => {
             dispatch({ type: GET_ADMIN_DATA, payload: res.data })
         })

@@ -10,31 +10,33 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  BoxProps,
-  FlexProps,
+  Switch,
+  useColorMode,
+  
 } from '@chakra-ui/react';
 import {
   FiHome,
   FiTrendingUp,
   FiCompass,
-  FiStar,
-  FiSettings,
+  FiUser,
   FiMenu,
 } from 'react-icons/fi';
+import {RiLogoutCircleRLine,RiFileListFill} from 'react-icons/ri'
+
 import {
   DashboardLogo
 } from "./Icons/Icons";
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { AdminLogout } from '../AdminRedux/AdminAuthReducer/action';
 
 const LinkItems = [
   { name: 'Dashboard', icon: FiHome ,path:"/dashboard"},
   { name: 'Products', icon: FiTrendingUp,path:"/adminproduct" },
-  { name: 'Order', icon: FiCompass,path:"/adminprofile" },
-  { name: 'Admins', icon: FiStar,path:"/admincreate" },
+  { name: 'Order', icon: RiFileListFill,path:"/adminprofile" },
+  { name: 'Admins', icon: FiUser,path:"/admincreate" },
 
 ];
 
@@ -70,12 +72,15 @@ export default function AdminSideBar({ children }) {
 
 
 const SidebarContent = ({ onClose, ...rest }) => {
+  const { toggleColorMode } = useColorMode();
+ const navigate =useNavigate()
   const dispatch=useDispatch()
 
   const {auth}=useSelector(store=>store.adminAuthReducer)
  const handleLogout=()=>{
-  
+    navigate("/adminlogin")
     AdminLogout(dispatch)
+    
  }
  console.log(auth)
   return (
@@ -88,9 +93,15 @@ const SidebarContent = ({ onClose, ...rest }) => {
       h="full"
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold" color="cyan.400">
+          TechTrove
         </Text>
+         <Switch
+            id="dark_mode"
+            colorScheme="teal"
+            size="lg"
+            onChange={toggleColorMode}
+          />
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -98,7 +109,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
           {link.name}
         </NavItem>
       ))}
-       <Link to={"#"} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+       <Link to={"/adminlogin"} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
       <Flex
     
         align="center"
@@ -123,12 +134,13 @@ const SidebarContent = ({ onClose, ...rest }) => {
             _groupHover={{
               color: 'white',
             }}
-            as={FiStar}
+            as={RiLogoutCircleRLine}
           />
         Logout
         
       </Flex>
     </Link>
+   
     </Box>
   );
 };

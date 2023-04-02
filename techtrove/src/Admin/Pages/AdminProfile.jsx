@@ -22,8 +22,8 @@ const AdminProfile=()=>{
     },[])
     console.log(orders)
     return (
-        <TableContainer>
-        <Table variant='striped' colorScheme='teal'>
+        <TableContainer >
+        <Table variant='striped' colorScheme='teal' w={'100%'}>
           
           <Thead>
             <Tr>
@@ -37,9 +37,9 @@ const AdminProfile=()=>{
           </Thead>
           <Tbody>
         {orders?.map((product,i)=>(
-           <Tr>
+           <Tr key={product.id}>
               <Td>{i+1}</Td>
-              <Td>{product.title}</Td>
+              <Td>{product.title.substr(0, 29)}...</Td>
               <Td>{product.category}</Td>
               <Td>{product.brand}</Td>
               <Td>{product.price}</Td>

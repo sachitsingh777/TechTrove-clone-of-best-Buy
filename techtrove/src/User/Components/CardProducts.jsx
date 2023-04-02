@@ -1,3 +1,4 @@
+import { Divider } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 
 export const CartProducts = ({ brand, category, id, imgUrl, rate, review, price, title }) => {
@@ -8,10 +9,10 @@ export const CartProducts = ({ brand, category, id, imgUrl, rate, review, price,
         setTotalAmount(qty*price)
     },[qty])
     return (
-        <div style={{ display: 'flex' ,justifyContent:'space-around',alignItems:'center'}}>
+        <div style={{ display: 'flex' ,justifyContent:'space-around',alignItems:'center' ,borderBottom:"1px solid gray" ,padding:"20px", }}>
             <img src={imgUrl} style={{width:'20%'}} />
-            <div style={{ width: "30%", display: 'flex', flexDirection: 'column', justifyContent: 'center' ,height:'100%',lineHeight:'50px'}}>
-                <h2>{brand}</h2>
+            <div style={{ width: "30%", flexDirection: 'column', justifyContent: 'center' ,height:'100%',lineHeight:'30px'}}>
+                <h2 style={{marginBottom:"5px"}}>{brand}</h2>
                 <h6>{title}</h6>
                 <div>{rate} {review}</div>
             </div>
@@ -21,6 +22,7 @@ export const CartProducts = ({ brand, category, id, imgUrl, rate, review, price,
                 <button onClick={()=>{setQty(qty+1)}} style={{fontSize:'30px'}}>+</button>
             </div>
             <h4 style={{fontSize:'30px'}}>${totalAmount}</h4>
+            
         </div>
     )
 

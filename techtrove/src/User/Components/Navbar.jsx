@@ -33,6 +33,7 @@ const Navbar = () => {
       borderBottom={"1px solid white"}
       h="4.5rem"
       display={"flex"}
+      mb={"0rem"}
     >
       <HStack
         h="100%"

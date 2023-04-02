@@ -7,13 +7,14 @@ import {
 import AdminReducer from "../../Admin/AdminRedux/AdminReducer"
 import { reducer as adminAuthReducer } from "../../Admin/AdminRedux/AdminAuthReducer/reducer";
 import { reducer as productreducer } from "./productReducer/reducer";
-import {reducer as authReducer } from './AuthReducer/reducer'
+import { reducer as authReducer } from './AuthReducer/reducer'
+import { reducer as cartReducer } from "./CartReducer/reducer"
 
 import thunk from "redux-thunk";
 
 const rootReducer = combineReducers(
-  { productreducer ,AdminReducer,adminAuthReducer,authReducer}
-  );
+  { productreducer, AdminReducer, adminAuthReducer, authReducer ,cartReducer}
+);
 
 
 export const store = legacy_createStore(

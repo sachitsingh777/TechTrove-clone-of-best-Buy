@@ -1,78 +1,127 @@
-p {
-    font-size: 12px;
+.button {
+    color: blue;
+    border: 1px solid blue;
+    background-color: white;
+    height: 45%;
+    width: 170px;
+    margin-top: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+}
 
-}
-.button{
-    /* style={{ color: 'blue', border: '1px solid blue', backgroundColor: 'white', height: "45%", width: "170px", marginTop: '15px', borderRadius: '4px fontWeight: bold; */
-color: blue;
-border: 1px solid blue;
-background-color: white;
-height: 45%;
-width: 170px;
-margin-top: 15px;
-border-radius: 4px;
-font-weight: bold;
-font-size: 13px;
-}
-.button:hover{
+.button:hover {
 
     cursor: pointer;
     color: white;
     background-color: blue;
 }
 
-.parentdiv{
-    background-color: rgb(243, 246, 249);
+.parentdiv1 {
+    /* height: 100px; */
+    margin-top: 50px;
+    /* border: 1px solid teal; */
 }
-.secondDiv{
+
+.firstDiv {
+    display: flex;
+    /* border: 1px solid red; */
+    background-color: rgb(243, 246, 249);
+    /* background-color: rgb(58, 145, 232); */
+
+}
+
+.secondDiv {
     width: 70%;
     background-color: white;
+    /* border: 1px solid green; */
+    background-color: rgb(243, 246, 249);
+    padding: 20px;
+
 }
+
 .yourCart {
     display: flex;
+    height: 90px;
     align-items: center;
     justify-content: space-between;
     background-color: white;
+    /* border: 1px solid black; */
+    padding: 30px;
 }
-
-
 
 .bestBuy>h3 {
     font-size: 15px;
-    font-weight: bold;
+    margin-bottom: -15px;
+    font-weight: 900;
 }
-
 
 .bestBuy>h1 {
     font-weight: bold;
     font-size: 35px;
-
 }
-.firstDiv{
+
+.bestBuy~div {
+    height: 100%;
+}
+
+.bestBuy~div>h5 {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.specialoffers {
+    /* border: 1px solid black; */
+    background-color: white;
     display: flex;
-    /* background-color: rgb(58, 145, 232); */
-
+    align-items: center;
+    height: 50px;
+    padding: 20px;
 }
-.orderSummary{
-    /* text-align: center; */
+
+.specialoffers>div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.specialoffers>div>h2 {
+    margin: 0px 10px 0px 10px
+}
+
+
+
+
+
+
+
+
+
+
+
+.orderSummary {
     width: 30%;
     background-color: white;
-    /* gap: 100px; */
+    /* border: 2px solid teal; */
+    padding: 20px;
 }
-.orderSummary>h2,p,Link,hr,h4,button,div>div{
+
+.orderSummary>h2,Link,hr,h4,button,div>div{
     margin-bottom: 10px;
-    padding: 10px;
 }
-.orderSummary>h2{
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
+
+
+
+hr {
+    width: 100%;
 }
-.orderSummary>Link{
+
+.orderSummary>Link {
     color: blue;
     font-size: 13px;
 }
-.orderSummary>button{
+
+.orderSummary>button {
     border: 1px solid teal;
     width: 100%;
     height: 50px;
@@ -82,42 +131,55 @@ font-size: 13px;
     justify-content: center;
 
 }
-.orderSummary>button{
+
+.orderSummary>button {
     cursor: pointer;
 }
-.orderSummary>button{ 
-    background-color: rgb(255,224,0);
+
+.orderSummary>button {
+    background-color: rgb(255, 224, 0);
     border-radius: 3px;
     border: none;
 }
-.orderSummary>button~button{
-    background-color: rgb(29,37,44);
+
+.orderSummary>button~button {
+    background-color: rgb(29, 37, 44);
     color: white;
     font-size: 20px;
     gap: 10px;
 }
-.orderSummary>button~button>h4{
+
+.orderSummary>button~button>h4 {
     font-size: 14px
 }
-.link{
+
+.link {
     color: rgb(89, 89, 251);
     font-size: 13px;
 }
-.orderSummary>h5,h6,h2{
-    font-weight: bold;
 
-}
-.orderSummary>div{
+.orderSummary>div {
     display: flex;
 }
-.orderSummary>div>div{
+
+.orderSummary>div>div {
     width: 30%;
 }
-.orderSummary>div>div~div{
+
+.orderSummary>div>div~div {
     width: 70%;
 }
-.gift{
+
+.gift {
     display: flex;
     flex-direction: column;
-    /* marginr; */
+    margin:auto;
+    height: 70px;
+}
+.gift>h2{
+    font-size: 17px;
+}
+.productsdiv{
+    background-color: white;
+    padding: 20px;
 }

@@ -19,11 +19,9 @@ export const CreateAccount = () => {
   const selector = useSelector((store) => {
     return store.authReducer.accountCreatedSuccessfull;
   });
-  useEffect(() => {
-    if (selector) {
-      <Navigate to="/login" />;
-    }
-  }, []);
+  if (selector === true) {
+    <Navigate to="/login" />;
+  }
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });

@@ -17,6 +17,7 @@ import AdminProfile from "../../Admin/Pages/AdminProfile";
 import AdminProduct from "../../Admin/Pages/AdminProduct";
 import AdminCreate from "../../Admin/Pages/AdminCreate";
 
+
 const AllRoutes = () => {
   const [seacrchparams, setSearchparams] = useSearchParams();
   const id = seacrchparams.getAll("id");

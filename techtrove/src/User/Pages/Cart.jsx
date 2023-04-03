@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getCartData } from "../Redux/CartReducer/Action";
 import { useDispatch } from "react-redux";
 import { CartProducts } from "../Components/CardProducts";
@@ -6,20 +6,35 @@ import { CartProducts } from "../Components/CardProducts";
 import "./Cart.css";
 import { AiTwotoneTag, AiOutlineGift } from "react-icons/ai";
 import { useEffect, useState } from "react";
+import axios from "axios";
 export const Cart = () => {
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [item, setItem] = useState(0);
   const [cartData, setCartData] = useState([]);
-  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const CheckOut = () => {
+    axios
+      .post("https://beautiful-calf-wear.cyclic.app/OrderDetail",  cartData )
+      .then((response) => {
+        console.log("Cart data added to orders successfully");
+        console.log(response.data); // response data from server
+       
+      })
+      .catch((error) => {
+        console.error("Error adding cart data to orders:", error);
+      }); 
+      navigate('/checkout');
+  };
+
   useEffect(() => {
     getCartData().then((res) => {
       // console.log(res.data)
       setCartData(res.data);
     });
   }, []);
-  const handleCheckout = () => {
-    alert("Product Order Successfull!");
-  };
+
+  const totalCartPrice = cartData.reduce(
+    (acc, curr) => acc + Number(curr.price),
+    0
+  );
   console.log(cartData);
   return (
     <div className="parentdiv">
@@ -108,7 +123,7 @@ export const Cart = () => {
           <hr />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <p>Item Total</p>
-            <p>{item}</p>
+            <p>{cartData.length}</p>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <p>Store Pickup</p>
@@ -118,11 +133,9 @@ export const Cart = () => {
           <hr />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <h4>Total</h4>
-            <h4>${totalPrice}</h4>
+            <h4>${totalCartPrice}</h4>
           </div>
-          <button>
-            <Link to={"/checkout"}>Checkout</Link>{" "}
-          </button>
+          <button onClick={CheckOut}>Checkout </button>
           {/* <button>
             <Link to={"/checkout"} >
               PayPal <h4>checkout</h4>

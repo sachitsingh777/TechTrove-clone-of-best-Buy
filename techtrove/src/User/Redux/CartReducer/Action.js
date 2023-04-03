@@ -1,3 +1,4 @@
+import { async } from 'q'
 import {GET_DATA_FAILURE,GET_DATA_LOADING,GET_DATA_SUCCESSFULL} from './actionTypes'
 import axios from 'axios'
 export const getCartData=async()=>{
@@ -10,3 +11,4 @@ export const getCartData=async()=>{
     //     dispatch({type:GET_DATA_FAILURE})
     // })
 }
+

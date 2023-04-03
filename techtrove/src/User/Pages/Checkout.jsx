@@ -25,7 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Checkout = () => {
   const [orders, setOrders] = useState([]);
   const dispatch = useDispatch();
-  const {cartData} = useSelector((store)=> store.cartReducer)
+  const { cartData } = useSelector((store) => store.cartReducer);
   const toast = useToast();
 
   const [formValues, setFormValues] = useState({
@@ -65,16 +65,14 @@ const Checkout = () => {
   };
 
   useEffect(() => {
-    dispatch(CARTGetProduct)
-    setOrders(cartData)
+    dispatch(CARTGetProduct);
+    setOrders(cartData);
   }, []);
 
-  
-  const totalPrice = orders.reduce(
-    (acc, curr) => acc + Number(curr.price),
-    0
-  );
-console.log(orders);
+  const totalPrice = orders.reduce((acc, curr) => acc + Number(curr.price), 0);
+  const sale = Number(71.99);
+  const shippingPrice = totalPrice + sale;
+  console.log(orders);
   return (
     <>
       <Box bgColor={"#f0f2f4"}>
@@ -250,14 +248,10 @@ console.log(orders);
                 </Text>
               </Box>
               </Box> */}
-             
-               {orders.map((el) => (
-              <ShipCard key={el.id} {...el}  />
-            ))} 
-             
-              
-              
-              
+
+              {orders.map((el) => (
+                <ShipCard key={el.id} {...el} />
+              ))}
             </VStack>
             <Divider mb={"1.5rem"} />
             <VStack fontSize="md" spacing={"1rem"}>
@@ -296,11 +290,11 @@ console.log(orders);
                   Total
                 </Heading>
                 <Heading as="h4" size="md">
-                  ${totalPrice + 71.94}
+                  ${shippingPrice}
                 </Heading>
               </Flex>
               <Divider mb={"1.5rem"} />
-              <Box>{<PayPal  />}</Box>
+              <Box>{<PayPal />}</Box>
             </VStack>
           </Box>
         </Box>

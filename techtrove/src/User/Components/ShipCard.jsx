@@ -22,7 +22,7 @@ const ShipCard = ({
       </Box>
       <Box>
         <Flex direction={"column"} fontSize={"sm"}>
-          <Box>$1999.99</Box>
+          <Box>${price}</Box>
           <Box>Qnt:1</Box>
           <Box
             color={"#0046be"}

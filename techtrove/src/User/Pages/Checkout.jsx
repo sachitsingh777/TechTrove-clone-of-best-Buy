@@ -16,13 +16,16 @@ import {
 import React, { useState } from "react";
 import PayPal from "../Components/PayPal";
 import { useToast } from "@chakra-ui/react";
-import { getCartData } from "../Redux/CartReducer/Action";
+import { CARTGetProduct, getCartData } from "../Redux/CartReducer/Action";
 import { useEffect } from "react";
 import CheckOutCard from "../Components/CheckOutCard";
 import ShipCard from "../Components/ShipCard";
+import { useDispatch, useSelector } from "react-redux";
 
 const Checkout = () => {
   const [orders, setOrders] = useState([]);
+  const dispatch = useDispatch();
+  const {cartData} = useSelector((store)=> store.cartReducer)
   const toast = useToast();
 
   const [formValues, setFormValues] = useState({
@@ -62,16 +65,16 @@ const Checkout = () => {
   };
 
   useEffect(() => {
-    getCartData().then((res) => {
-      // console.log(res.data)
-      setOrders(res.data);
-    });
+    dispatch(CARTGetProduct)
+    setOrders(cartData)
   }, []);
+
+  
   const totalPrice = orders.reduce(
     (acc, curr) => acc + Number(curr.price),
     0
   );
-
+console.log(orders);
   return (
     <>
       <Box bgColor={"#f0f2f4"}>

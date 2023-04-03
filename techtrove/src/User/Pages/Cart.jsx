@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import { getCartData } from "../Redux/CartReducer/Action";
-import { useDispatch } from "react-redux";
+import { CARTGetProduct, getCartData } from "../Redux/CartReducer/Action";
+import { useDispatch, useSelector } from "react-redux";
+
 import { CartProducts } from "../Components/CardProducts";
 
 import "./Cart.css";
@@ -8,7 +9,13 @@ import { AiTwotoneTag, AiOutlineGift } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "axios";
 export const Cart = () => {
-  const [cartData, setCartData] = useState([]);
+
+  const [remove, setRemove] = useState(false)
+  const dispatch = useDispatch();
+  const {cartData} = useSelector((store)=> store.cartReducer)
+
+ console.log(cartData);
+  
   const navigate = useNavigate()
   const CheckOut = () => {
     axios
@@ -23,19 +30,21 @@ export const Cart = () => {
       }); 
       navigate('/checkout');
   };
+  
+  const Remove = ()=>{
+    setRemove(!remove)
+  }
 
   useEffect(() => {
-    getCartData().then((res) => {
-      // console.log(res.data)
-      setCartData(res.data);
-    });
-  }, []);
+   dispatch(CARTGetProduct)
+
+  }, [remove]);
 
   const totalCartPrice = cartData.reduce(
     (acc, curr) => acc + Number(curr.price),
     0
   );
-  console.log(cartData);
+  // console.log(remove);
   return (
     <div className="parentdiv">
       <div
@@ -114,7 +123,7 @@ export const Cart = () => {
           <div className="productsdiv" style={{ marginBottom: "25px" }}>
             {cartData.length > 0 &&
               cartData.map((ele) => {
-                return <CartProducts key={ele.id} {...ele} />;
+                return <CartProducts key={ele.id} {...ele}  Remove={Remove}/>;
               })}
           </div>
         </div>

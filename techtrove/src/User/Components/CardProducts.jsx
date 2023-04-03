@@ -1,7 +1,9 @@
 import { Button, Divider } from "@chakra-ui/react";
+import { useDispatch } from "react-redux"
 import axios from "axios";
 import { async } from "q";
 import { useEffect, useState } from "react";
+import { CARTDeleteProduct } from "../Redux/CartReducer/Action";
 
 export const CartProducts = ({
   brand,
@@ -12,25 +14,35 @@ export const CartProducts = ({
   review,
   price,
   title,
+  Remove
 }) => {
   // console.log("running  cart compoennets")
+  const dispatch = useDispatch();
   const [qty, setQty] = useState(1);
   const [totalAmount, setTotalAmount] = useState(0);
-
+  
+    const RemoveProductitem=(id)=>{
+     dispatch(CARTDeleteProduct(id))
+      Remove()
+    }
   useEffect(() => {
     setTotalAmount(qty * price);
   }, [qty]);
+  
+ useEffect(()=>{
+  RemoveProductitem()
+ },[])
 
-  const RemoveProduct = async (id) => {
-    await axios
-      .delete(`https://beautiful-calf-wear.cyclic.app/AddToCart/${id}`)
-      .then(() => {
-        console.log(`Product ${id} removed successfully`);
-      })
-      .catch((error) => {
-        console.error(`Error removing product ${id}:`, error);
-      });
-  };
+  // const RemoveProduct = async (id) => {
+  //   await axios
+  //     .delete(`https://beautiful-calf-wear.cyclic.app/AddToCart/${id}`)
+  //     .then(() => {
+  //       console.log(`Product ${id} removed successfully`);
+  //     })
+  //     .catch((error) => {
+  //       console.error(`Error removing product ${id}:`, error);
+  //     });
+  // };
 
   return (
     <div
@@ -92,7 +104,7 @@ export const CartProducts = ({
         </button>
       </div>
       <h4 style={{ fontSize: "30px" }}>${totalAmount}</h4>
-      <Button onClick={() => RemoveProduct(id)}> Remove </Button>
+      <Button onClick={()=>RemoveProductitem(id)}> Remove </Button>
     </div>
   );
 };

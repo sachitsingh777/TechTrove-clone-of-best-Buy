@@ -1,5 +1,5 @@
 import { Button, Divider } from "@chakra-ui/react";
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import { async } from "q";
 import { useEffect, useState } from "react";
@@ -14,24 +14,24 @@ export const CartProducts = ({
   review,
   price,
   title,
-  Remove
+  Remove,
 }) => {
   // console.log("running  cart compoennets")
   const dispatch = useDispatch();
   const [qty, setQty] = useState(1);
   const [totalAmount, setTotalAmount] = useState(0);
-  
-    const RemoveProductitem=(id)=>{
-     dispatch(CARTDeleteProduct(id))
-      Remove()
-    }
+
+  const RemoveProductitem = (id) => {
+    dispatch(CARTDeleteProduct(id));
+    Remove();
+  };
   useEffect(() => {
     setTotalAmount(qty * price);
   }, [qty]);
-  
- useEffect(()=>{
-  RemoveProductitem()
- },[])
+
+  //  useEffect(()=>{
+
+  //  },[])
 
   // const RemoveProduct = async (id) => {
   //   await axios
@@ -54,7 +54,7 @@ export const CartProducts = ({
         padding: "20px",
       }}
     >
-      <img src={imgUrl} style={{ width: "20%" }} alt="img"/>
+      <img src={imgUrl} style={{ width: "20%" }} alt="img" />
       <div
         style={{
           width: "30%",
@@ -104,7 +104,7 @@ export const CartProducts = ({
         </button>
       </div>
       <h4 style={{ fontSize: "30px" }}>${totalAmount}</h4>
-      <Button onClick={()=>RemoveProductitem(id)}> Remove </Button>
+      <Button onClick={() => RemoveProductitem(id)}> Remove </Button>
     </div>
   );
 };

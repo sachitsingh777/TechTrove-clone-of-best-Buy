@@ -1,5 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { CARTGetProduct, getCartData } from "../Redux/CartReducer/Action";
+import {
+  CARTDeleteProduct,
+  CARTGetProduct,
+  getCartData,
+} from "../Redux/CartReducer/Action";
 import { useDispatch, useSelector } from "react-redux";
 
 import { CartProducts } from "../Components/CardProducts";
@@ -9,35 +13,32 @@ import { AiTwotoneTag, AiOutlineGift } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "axios";
 export const Cart = () => {
-
-  const [remove, setRemove] = useState(false)
+  const [remove, setRemove] = useState(true);
   const dispatch = useDispatch();
-  const {cartData} = useSelector((store)=> store.cartReducer)
+  const { cartData } = useSelector((store) => store.cartReducer);
 
- console.log(cartData);
-  
-  const navigate = useNavigate()
+  console.log(cartData);
+
+  const navigate = useNavigate();
   const CheckOut = () => {
     axios
-      .post("https://beautiful-calf-wear.cyclic.app/OrderDetail",  cartData )
+      .post("https://beautiful-calf-wear.cyclic.app/OrderDetail", cartData)
       .then((response) => {
         console.log("Cart data added to orders successfully");
         console.log(response.data); // response data from server
-       
       })
       .catch((error) => {
         console.error("Error adding cart data to orders:", error);
-      }); 
-      navigate('/checkout');
+      });
+    navigate("/checkout");
   };
-  
-  const Remove = ()=>{
-    setRemove(!remove)
-  }
+
+  const Remove = () => {
+    setRemove(!remove);
+  };
 
   useEffect(() => {
-   dispatch(CARTGetProduct)
-
+    dispatch(CARTGetProduct);
   }, [remove]);
 
   const totalCartPrice = cartData.reduce(
@@ -123,7 +124,7 @@ export const Cart = () => {
           <div className="productsdiv" style={{ marginBottom: "25px" }}>
             {cartData.length > 0 &&
               cartData.map((ele) => {
-                return <CartProducts key={ele.id} {...ele}  Remove={Remove}/>;
+                return <CartProducts key={ele.id} {...ele} Remove={Remove} />;
               })}
           </div>
         </div>

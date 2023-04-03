@@ -131,7 +131,7 @@ const Navbar = () => {
         display={{base:"none", lg:"flex",}}
       >
         <Box h="100%" width={"20%"} p={"1rem"}>
-          <Link to={"/store"}>
+          <Link to={"/products"}>
             <Flex color={"white"} gap={"2px"} alignItems="center">
               <Icon as={AiOutlineShop} fontSize="2rem" />
               <Heading as="h4" size="md">

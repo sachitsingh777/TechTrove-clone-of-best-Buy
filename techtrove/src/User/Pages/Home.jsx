@@ -76,9 +76,20 @@ const Home = () => {
                 h={"50%"}
                 margin="40px 0px 15px 100px"
               />
-              <Text ml={"15px"} color={"#0046be"} fontSize='md'  _hover={{ cursor: "pointer",textDecoration:"underline" }}>Apple - 12.9-Inch iPad Pro with Wi-Fi + Cellular - 256GB</Text>
-              <Text ml={"15px"} color={"#000000"} fontSize='md'>$799.99</Text>
-              <Text ml={"15px"} textDecoration={"line-through"} fontSize='md'>$999.99</Text>
+              <Text
+                ml={"15px"}
+                color={"#0046be"}
+                fontSize="md"
+                _hover={{ cursor: "pointer", textDecoration: "underline" }}
+              >
+                Apple - 12.9-Inch iPad Pro with Wi-Fi + Cellular - 256GB
+              </Text>
+              <Text ml={"15px"} color={"#000000"} fontSize="md">
+                $799.99
+              </Text>
+              <Text ml={"15px"} textDecoration={"line-through"} fontSize="md">
+                $999.99
+              </Text>
               <Text m={"15px 15px"} color={"#0046be"}>
                 See bonus deals
               </Text>
@@ -110,108 +121,112 @@ const Home = () => {
         </Box>
       </Box>
       <br />
-<Box overflowX={"auto"}>
-<HStack p="1rem" spacing={"25px"} width="1500px" justifyContent="space-around">
-        <Box
-          w={"33%"}
-          border={"1px solid #A0AEC0"}
-          _hover={{ cursor: "pointer" }}
+      <Box overflowX={"auto"}>
+        <HStack
+          p="1rem"
+          spacing={"25px"}
+          width="1500px"
+          justifyContent="space-around"
         >
-          <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/ghp-MMT-669182-tv-16c7b1f5-f700-4469-bcf6-821e568b4e3f.jpg;maxHeight=960;maxWidth=960" />
-        </Box>
-        <Box
-          w={"33%"}
-          border={"1px solid #A0AEC0"}
-          _hover={{ cursor: "pointer" }}
-        >
-          <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/SOL-106837-iphone14-yellow-na-ghp-a82b438b-18ff-47cc-880a-63e33b653e8e.jpg;maxHeight=960;maxWidth=960" />
-        </Box>
-        <Box
-          w={"33%"}
-          border={"1px solid #A0AEC0"}
-          _hover={{ cursor: "pointer" }}
-        >
-          <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/subghp-EVN-205712-upgrade-plus-b513dde8-d003-432d-b792-8b4eb9903e0d.jpg;maxHeight=960;maxWidth=960" />
-        </Box>
-      </HStack>
-</Box>
-      
+          <Box
+            w={"33%"}
+            border={"1px solid #A0AEC0"}
+            _hover={{ cursor: "pointer" }}
+          >
+            <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/ghp-MMT-669182-tv-16c7b1f5-f700-4469-bcf6-821e568b4e3f.jpg;maxHeight=960;maxWidth=960" />
+          </Box>
+          <Box
+            w={"33%"}
+            border={"1px solid #A0AEC0"}
+            _hover={{ cursor: "pointer" }}
+          >
+            <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/SOL-106837-iphone14-yellow-na-ghp-a82b438b-18ff-47cc-880a-63e33b653e8e.jpg;maxHeight=960;maxWidth=960" />
+          </Box>
+          <Box
+            w={"33%"}
+            border={"1px solid #A0AEC0"}
+            _hover={{ cursor: "pointer" }}
+          >
+            <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/subghp-EVN-205712-upgrade-plus-b513dde8-d003-432d-b792-8b4eb9903e0d.jpg;maxHeight=960;maxWidth=960" />
+          </Box>
+        </HStack>
+      </Box>
 
       <br />
       <Box overflowX={"auto"}>
-      <Box p="1rem" width={"1500px"}>
-        <Heading as="h4" size="md" mb={"12px"}>
-          Our featured offers
-        </Heading>
+        <Box p="1rem" width={"1500px"}>
+          <Heading as="h4" size="md" mb={"12px"}>
+            Our featured offers
+          </Heading>
 
-        <Box
-          display={"flex"}
-          flexDirection="row"
-          p={"2rem"}
-          gap={"5px"}
-          borderTop="1px solid #A0AEC0"
-        >
-          <HStack>
-            <Box
-              _hover={{ cursor: "pointer" }}
-              p="1.5rem"
-              borderRight="1px solid #A0AEC0"
-            >
-              <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/pol-MMT-665820_DER-87a2497b-38b8-45a5-b746-0bb83bc7ee42.jpg;maxHeight=504;maxWidth=740" />
-              <Heading
-                _hover={{ cursor: "pointer", textDecoration: "underline" }}
-                mt={"1.5rem"}
-                as="h4"
-                size="md"
-                color={"#0046be"}
+          <Box
+            display={"flex"}
+            flexDirection="row"
+            p={"2rem"}
+            gap={"5px"}
+            borderTop="1px solid #A0AEC0"
+          >
+            <HStack>
+              <Box
+                _hover={{ cursor: "pointer" }}
+                p="1.5rem"
+                borderRight="1px solid #A0AEC0"
               >
-                Spring Appliance Saving Event.
-              </Heading>
-              <Text color={" #67696a"} mt={"0.5rem"} fontSize="xs">
-                Upgrade your space and get fast fulfillment on select major
-                appliances.
-              </Text>
-            </Box>
+                <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/pol-MMT-665820_DER-87a2497b-38b8-45a5-b746-0bb83bc7ee42.jpg;maxHeight=504;maxWidth=740" />
+                <Heading
+                  _hover={{ cursor: "pointer", textDecoration: "underline" }}
+                  mt={"1.5rem"}
+                  as="h4"
+                  size="md"
+                  color={"#0046be"}
+                >
+                  Spring Appliance Saving Event.
+                </Heading>
+                <Text color={" #67696a"} mt={"0.5rem"} fontSize="xs">
+                  Upgrade your space and get fast fulfillment on select major
+                  appliances.
+                </Text>
+              </Box>
 
-            <Box
-              _hover={{ cursor: "pointer" }}
-              p="0.5rem"
-              borderRight="1px solid #A0AEC0"
-            >
-              <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/top-MMT-665816-Save350WindowsLaptops_DER-b825f326-fdf3-4358-a96c-2bee0b54751f.jpg;maxHeight=504;maxWidth=740" />
-              <Heading
-                _hover={{ cursor: "pointer", textDecoration: "underline" }}
-                mt={"1rem"}
-                as="h4"
-                size="md"
-                color={"#0046be"}
+              <Box
+                _hover={{ cursor: "pointer" }}
+                p="0.5rem"
+                borderRight="1px solid #A0AEC0"
               >
-                Save Up to $350 on select Windows laptops.
-              </Heading>
-              <Text color={" #67696a"} mt={"0.5rem"} fontSize="xs">
-                Minimum saving is %50
-              </Text>
-            </Box>
+                <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/top-MMT-665816-Save350WindowsLaptops_DER-b825f326-fdf3-4358-a96c-2bee0b54751f.jpg;maxHeight=504;maxWidth=740" />
+                <Heading
+                  _hover={{ cursor: "pointer", textDecoration: "underline" }}
+                  mt={"1rem"}
+                  as="h4"
+                  size="md"
+                  color={"#0046be"}
+                >
+                  Save Up to $350 on select Windows laptops.
+                </Heading>
+                <Text color={" #67696a"} mt={"0.5rem"} fontSize="xs">
+                  Minimum saving is %50
+                </Text>
+              </Box>
 
-            <Box _hover={{ cursor: "pointer" }} p="1rem">
-              <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/MMT-635964-airpods-family-pol_der-c4fae3bf-49cc-4618-98ee-ca0a80ab6265.jpg;maxHeight=504;maxWidth=740" />
-              <Heading
-                _hover={{ cursor: "pointer", textDecoration: "underline" }}
-                mt={"2rem"}
-                as="h4"
-                size="md"
-                color={"#0046be"}
-              >
-                AirPods Max
-              </Heading>
-              <Text color={" #67696a"} mt={"0.5rem"} fontSize="xs">
-                Over-ear headphones reimagined with immersive high-fidelity
-                audio and an exceptional fir.
-              </Text>
-            </Box>
-          </HStack>
+              <Box _hover={{ cursor: "pointer" }} p="1rem">
+                <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/MMT-635964-airpods-family-pol_der-c4fae3bf-49cc-4618-98ee-ca0a80ab6265.jpg;maxHeight=504;maxWidth=740" />
+                <Heading
+                  _hover={{ cursor: "pointer", textDecoration: "underline" }}
+                  mt={"2rem"}
+                  as="h4"
+                  size="md"
+                  color={"#0046be"}
+                >
+                  AirPods Max
+                </Heading>
+                <Text color={" #67696a"} mt={"0.5rem"} fontSize="xs">
+                  Over-ear headphones reimagined with immersive high-fidelity
+                  audio and an exceptional fir.
+                </Text>
+              </Box>
+            </HStack>
+          </Box>
         </Box>
-      </Box>
       </Box>
       <br />
       <br />

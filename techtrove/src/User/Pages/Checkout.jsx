@@ -16,8 +16,13 @@ import {
 import React, { useState } from "react";
 import PayPal from "../Components/PayPal";
 import { useToast } from "@chakra-ui/react";
+import { getCartData } from "../Redux/CartReducer/Action";
+import { useEffect } from "react";
+import CheckOutCard from "../Components/CheckOutCard";
+import ShipCard from "../Components/ShipCard";
 
 const Checkout = () => {
+  const [orders, setOrders] = useState([]);
   const toast = useToast();
 
   const [formValues, setFormValues] = useState({
@@ -56,6 +61,17 @@ const Checkout = () => {
     });
   };
 
+  useEffect(() => {
+    getCartData().then((res) => {
+      // console.log(res.data)
+      setOrders(res.data);
+    });
+  }, []);
+  const totalPrice = orders.reduce(
+    (acc, curr) => acc + Number(curr.price),
+    0
+  );
+
   return (
     <>
       <Box bgColor={"#f0f2f4"}>
@@ -92,7 +108,7 @@ const Checkout = () => {
                 </Heading>
               </Box>
             </HStack>
-            <HStack>
+            {/* <HStack>
               <Box>
                 <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6509/6509650_sd.jpg;canvasHeight=100;canvasWidth=100" />
               </Box>
@@ -102,7 +118,12 @@ const Checkout = () => {
                   SSD...
                 </Text>
               </Box>
-            </HStack>
+            </HStack> */}
+
+            {orders.map((el) => (
+              <CheckOutCard key={el.id} {...el} />
+            ))}
+
             <Divider />
             <Box>
               <Heading as="h5" size="sm" m={"0.5rem"}>
@@ -214,8 +235,9 @@ const Checkout = () => {
               </Box>
             </HStack>
 
-            <HStack mb={"1rem"}>
-              <Box>
+            <VStack mb={"1rem"}>
+              {/* <Box>
+                <Box>
                 <Image src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6509/6509650_sd.jpg;canvasHeight=100;canvasWidth=100" />
               </Box>
               <Box>
@@ -224,19 +246,16 @@ const Checkout = () => {
                   SSD...
                 </Text>
               </Box>
-              <Box>
-                <Flex direction={"column"} fontSize={"sm"}>
-                  <Box>$1999.99</Box>
-                  <Box>Qnt:1</Box>
-                  <Box
-                    color={"#0046be"}
-                    _hover={{ cursor: "pointer", textDecoration: "underline" }}
-                  >
-                    Remove
-                  </Box>
-                </Flex>
-              </Box>
-            </HStack>
+              </Box> */}
+             
+               {orders.map((el) => (
+              <ShipCard key={el.id} {...el}  />
+            ))} 
+             
+              
+              
+              
+            </VStack>
             <Divider mb={"1.5rem"} />
             <VStack fontSize="md" spacing={"1rem"}>
               <Flex
@@ -249,7 +268,7 @@ const Checkout = () => {
                   Item Subtotal
                 </Text>
                 <Text color={"black"} fontSize="md">
-                  $1999.99
+                  ${totalPrice}
                 </Text>
               </Flex>
               <Flex w={"100%"} justifyContent={"space-between"}>
@@ -274,7 +293,7 @@ const Checkout = () => {
                   Total
                 </Heading>
                 <Heading as="h4" size="md">
-                  ${1999.99 + 71.94}
+                  ${totalPrice + 71.94}
                 </Heading>
               </Flex>
               <Divider mb={"1.5rem"} />

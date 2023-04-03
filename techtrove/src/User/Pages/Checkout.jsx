@@ -300,7 +300,7 @@ console.log(orders);
                 </Heading>
               </Flex>
               <Divider mb={"1.5rem"} />
-              <Box>{<PayPal />}</Box>
+              <Box>{<PayPal  />}</Box>
             </VStack>
           </Box>
         </Box>

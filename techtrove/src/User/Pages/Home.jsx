@@ -249,7 +249,7 @@ const Home = () => {
         <Heading as="h4" size="md" mb={"12px"}>
           You may also like
         </Heading>
-        <Divider colorScheme={ "#838486"} />
+        <Divider colorScheme={"#838486"} />
         <Box overflowX={"auto"}>
           <Box
             display={"flex"}

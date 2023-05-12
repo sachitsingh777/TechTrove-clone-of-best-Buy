@@ -23,6 +23,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
 const Navbar = () => {
+
   return (
     <Box
       position={"sticky"}
@@ -34,23 +35,21 @@ const Navbar = () => {
       h="4.5rem"
       display={"flex"}
       mb={"0rem"}
+     
     >
       <HStack
         h="100%"
-        width={{ md: "90%", base: "90%" }}
-        paddingLeft={{ md: "2rem", base: "0.5rem" }}
-        spacing={{ md: "1.5rem", base: "2.5rem" }}
+        width={{ md: "90%", base: "90%", }}
         display={{ base: "flex", md: "flex" }}
+        gap={{md:"10px", sm:"15px"}}
       >
 
-        <Box w="15%" h="100%">
+        <Box w="15%" h="100%" >
           <Link to={"/"}>
             <Image src="/TechTrove_logo.png" alt="logo" height={"100%"} />
           </Link>
         </Box>
-        <Box p="1.5rem" alignItems={"center"} w="15%" h="100%">
-
-      
+        <Box p="1.5rem" alignItems={"center"} w={{sm:"25%", md:"18%"}} h="100%">
           <Menu>
             <MenuButton variant="outline">
               <Flex color={"white"}>
@@ -121,36 +120,36 @@ const Navbar = () => {
           </InputGroup>
         </Box>
       </HStack>
-      <HStack
+      <Flex
         pr={"5rem"}
-        justifyContent={"flex-end"}
-        borderBottom={"1px solid black"}
+       
         h="100%"
-        width={"40%"}
+        width={{md:"40%", sm:"20%"}}
         spacing={"30px"}
-        display={{base:"none", lg:"flex",}}
+       
+       
       >
-        <Box h="100%" width={"20%"} p={"1rem"}>
+        <Box h="100%" width={"50%"} p={"1rem"} >
           <Link to={"/products"}>
             <Flex color={"white"} gap={"2px"} alignItems="center">
               <Icon as={AiOutlineShop} fontSize="2rem" />
-              <Heading as="h4" size="md">
+              <Heading as="h4" size="md" display={{sm:"none" ,md:"block" ,base:"block"}}>
                 Aiea
               </Heading>
             </Flex>
           </Link>
         </Box>
-        <Box h="100%" width={"20%"} p={"1rem"}>
+        <Box h="100%" width={"50%"} p={"1rem"}  >
           <Link to={"/cart"}>
             <Flex color={"white"} gap={"2px"} alignItems="center">
               <Icon as={HiOutlineShoppingCart} fontSize="2rem" />
-              <Heading as="h4" size="md">
+              <Heading as="h4" size="md" display={{sm:"none" ,md:"block" ,base:"block"}}>
                 Cart
               </Heading>
             </Flex>
           </Link>
         </Box>
-      </HStack>
+      </Flex>
     </Box>
   );
 };

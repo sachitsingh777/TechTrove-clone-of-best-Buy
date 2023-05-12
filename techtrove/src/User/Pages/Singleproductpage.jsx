@@ -23,70 +23,57 @@ import {
   Flex,
   VStack,
   Button,
-  Heading,
   SimpleGrid,
   StackDivider,
   useColorModeValue,
-  VisuallyHidden,
   List,
   ListItem,
+  useToast,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+
 import { MdLocalShipping } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-// import { singleData } from "../Redux/productReducer/action";
+import { useDispatch } from "react-redux";
+
 export default function Singleproductpage() {
   const dispatch = useDispatch();
+  const toast = useToast();
 
-  const [seacrchparams, setSearchparams] = useSearchParams();
   const [data, setdata] = useState({});
-  //   const id = seacrchparams.getAll("id");
+
   const { id } = useParams();
-  //   console.log(initialfilter);
+
   const singleData = async () => {
     let singledata = await axios.get(
-      `https://beautiful-calf-wear.cyclic.app/products/${id}`
+      `https://json-server-bestbuy.onrender.com/products/${id}`
     );
     console.log(singledata.data);
     setdata(singledata.data);
   };
 
-  //   "id": 5,
-  //     "imgUrl": "https://multimedia.bbycastatic.ca/multimedia/products/250x250/157/15745/15745797.jpg",
-  //     "title": "Amazon Kindle Paperwhite 8GB 6.8'' Digital eReader with Touchscreen (B08N36XNTT) - Black",
-  //     "rate": "⭐⭐⭐⭐⭐",
-  //     "review": 3,
-  //     "top": "Top Deal",
-  //     "save": "SAVE $25",
-  //     "price": 124.99,
-  //     "category": "TV",
-  //     "brand": "Amazon"
   const Addcart = async () => {
-    // let newobj = {
-    //   id: data.id,
-    //   imgUrl: data.imgUrl,
-    //   title: data.title,
-    //   rate: data.rate,
-    //   top: data.top,
-    //   save: data.save,
-    //   price: data.price,
-    //   category: data.category,
-    //   brand: data.brand,
-    // };
     try {
       let newdata = await axios.post(
-        "https://beautiful-calf-wear.cyclic.app/AddToCart ",
+        "https://json-server-bestbuy.onrender.com/AddToCart ",
         data
       );
+      
+      toast({
+        title: `Successful.`,
+        description: `Product added to the cart`,
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
     } catch {
       console.log("errooooooor");
     }
-    // console.log(newobj);
+    
   };
   useEffect(() => {
     singleData();
   }, []);
-  console.log(id);
+
   return (
     <Container maxW={"7xl"}>
       <SimpleGrid
@@ -106,23 +93,6 @@ export default function Singleproductpage() {
           />
         </Flex>
         <Stack spacing={{ base: 6, md: 10 }}>
-          <Box as={"header"}>
-            <Heading
-              lineHeight={1.1}
-              fontWeight={600}
-              fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
-            >
-              {data.category}
-            </Heading>
-            <Text
-              color={useColorModeValue("gray.900", "gray.400")}
-              fontWeight={300}
-              fontSize={"2xl"}
-            >
-              {data.price}
-            </Text>
-          </Box>
-
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={"column"}
@@ -134,11 +104,18 @@ export default function Singleproductpage() {
           >
             <VStack spacing={{ base: 4, sm: 6 }}>
               <Text
-                color={useColorModeValue("gray.500", "gray.400")}
+                color={useColorModeValue("#040c13")}
                 fontSize={"2xl"}
                 fontWeight={"300"}
               >
                 {data.title}
+              </Text>
+              <Text
+                color={useColorModeValue("#040c13", "gray.400")}
+                fontWeight={300}
+                fontSize={"2xl"}
+              >
+                $ {data.price}
               </Text>
             </VStack>
             <Box>
@@ -225,8 +202,8 @@ export default function Singleproductpage() {
             mt={8}
             size={"lg"}
             py={"7"}
-            bg={useColorModeValue("gray.900", "gray.50")}
-            color={useColorModeValue("white", "gray.900")}
+            bg={useColorModeValue("#ffeb00")}
+            color={useColorModeValue("black", "gray.900")}
             textTransform={"uppercase"}
             _hover={{
               transform: "translateY(2px)",

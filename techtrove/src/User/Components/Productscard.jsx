@@ -8,6 +8,7 @@ import {
   Image,
   Stack,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 const Productscard = ({
   imgUrl,
@@ -24,6 +25,7 @@ const Productscard = ({
   p2,
 }) => {
   const divert = useNavigate();
+  const toast = useToast()
 
   const handleRoute = () => {
     divert(`/products/${id}`);
@@ -46,10 +48,18 @@ const Productscard = ({
     };
 
     let data = await axios.post(
-      "https://beautiful-calf-wear.cyclic.app/AddToCart",
+      "https://json-server-bestbuy.onrender.com/AddToCart",
       newobj
     );
-    console.log(data.data);
+    toast({
+      title: `Successful.`,
+      description: `Product added to the cart`,
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+      position: "top"
+  })
+    // console.log(data.data);
   };
 
   return (
@@ -59,6 +69,7 @@ const Productscard = ({
       borderRadius="md"
       mb={4}
       p={4}
+      _hover={{cursor:"pointer"}}
     >
       <Box w={{ base: "100%", md: "30%" }} mr={{ md: 4 }} onClick={handleRoute}>
         <Image src={imgUrl} alt={id} />
@@ -88,8 +99,8 @@ const Productscard = ({
           ${price}
         </Text>
         <Button
-          bg="yellow.400"
-          color="white"
+          bg="#ffeb00"
+          color="black"
           fontWeight="bold"
           borderRadius="md"
           px={{ base: 2, md: 4 }}

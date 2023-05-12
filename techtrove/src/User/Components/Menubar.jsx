@@ -9,7 +9,7 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  Text ,
+  Text,
 } from "@chakra-ui/react";
 import React from "react";
 import { MdAccountCircle, MdOutlineLocalOffer } from "react-icons/md";
@@ -17,33 +17,45 @@ import { GiBackwardTime } from "react-icons/gi";
 import { BsFillBoxSeamFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-
 const Menubar = () => {
   return (
     <>
       <Box
         bgColor={"#0046be"}
-       
         p="0.8rem"
-        boxShadow=" 0px 7px 7px -5px rgba(120,108,120,0.2)" 
-       display={{base:"none",md:"none" ,lg:"block"}}
-       maxH={"3rem"}
+        boxShadow=" 0px 7px 7px -5px rgba(120,108,120,0.2)"
+        display={{ lg: "block", md: "none", sm: "none",  }}
+        maxH={"3rem"}
       >
-        <Flex gap="0.5rem" justify={"space-around"} >
+        <Flex gap="0.5rem" justify={"space-around"}>
           <Box display={"flex"} gap="2.5rem" mr={"2rem"}>
-            <Text color={"white"}  fontSize="sm">Top Deals</Text >
-            <Text color={"white"} fontSize="sm">Deal of the Day</Text >
-            <Text color={"white"} fontSize="sm">Totaltech Membership</Text >
-            <Text color={"white"} fontSize="sm">Credit Cards</Text >
-            <Text color={"white"} fontSize="sm">Gift Cards</Text >
-            <Text color={"white"} fontSize="sm">Gift Ideas </Text >
-            <Text color={"white"} fontSize="sm">Health & Wellness</Text >
+            <Text color={"white"} fontSize="sm">
+              Top Deals
+            </Text>
+            <Text color={"white"} fontSize="sm">
+              Deal of the Day
+            </Text>
+            <Text color={"white"} fontSize="sm">
+              Totaltech Membership
+            </Text>
+            <Text color={"white"} fontSize="sm">
+              Credit Cards
+            </Text>
+            <Text color={"white"} fontSize="sm">
+              Gift Cards
+            </Text>
+            <Text color={"white"} fontSize="sm">
+              Gift Ideas{" "}
+            </Text>
+            <Text color={"white"} fontSize="sm">
+              Health & Wellness
+            </Text>
             <Menu>
               <MenuButton>
                 <Text color={"white"} fontSize="sm">
                   More
                   <ChevronDownIcon />
-                </Text >
+                </Text>
               </MenuButton>
               <MenuList>
                 <MenuItem>Best Buy Outlet</MenuItem>
@@ -52,14 +64,16 @@ const Menubar = () => {
               </MenuList>
             </Menu>
           </Box>
-          <Box display={"flex"} justifyContent="space-evenly" gap={"1rem"} >
+          <Box display={"flex"} justifyContent="space-evenly" gap={"1rem"}>
             <Box>
               <Menu>
                 <MenuButton>
                   {" "}
                   <Flex color={"white"}>
                     <MdAccountCircle style={{ marginTop: "3px" }} />
-                    <Text color={"white"} fontSize="sm">Account</Text >
+                    <Text color={"white"} fontSize="sm">
+                      Account
+                    </Text>
                     <ChevronDownIcon style={{ marginTop: "3px" }} />
                   </Flex>
                 </MenuButton>
@@ -85,35 +99,37 @@ const Menubar = () => {
             </Box>
             <Box>
               <Menu>
-                <MenuButton as={Text }>
+                <MenuButton as={Text}>
                   {" "}
                   <Flex color={"white"}>
                     {/* <MdAccountCircle style={{marginTop:"3px"}} /> */}
-                    <Text color={"white"} fontSize="sm">Recently Viewed</Text >
+                    <Text color={"white"} fontSize="sm">
+                      Recently Viewed
+                    </Text>
                     <ChevronDownIcon style={{ marginTop: "3px" }} />
                   </Flex>
                 </MenuButton>
                 <MenuList>
-                  <MenuItem >
+                  <MenuItem>
                     <GiBackwardTime style={{ fontSize: "2.3rem" }} />
-                    <Heading  as="h4" size="md">
+                    <Heading as="h4" size="md">
                       Recently Viewed
                     </Heading>
                   </MenuItem>
                   <Divider />
-                  <MenuItem >Purchases</MenuItem>
+                  <MenuItem>Purchases</MenuItem>
                   <MenuItem>Products</MenuItem>
                 </MenuList>
               </Menu>
             </Box>
             <Box>
               <Menu>
-                <MenuButton as={Text }>
+                <MenuButton as={Text}>
                   {" "}
                   {/* <MdAccountCircle style={{marginTop:"3px"}} /> */}
-                  <Text  color={"white"} fontSize="sm">
+                  <Text color={"white"} fontSize="sm">
                     Order Status <ChevronDownIcon />
-                  </Text >
+                  </Text>
                 </MenuButton>
                 <MenuList>
                   <MenuItem>
@@ -131,12 +147,12 @@ const Menubar = () => {
             </Box>
             <Box>
               <Menu>
-                <MenuButton as={Text }>
+                <MenuButton as={Text}>
                   {" "}
                   {/* <MdAccountCircle style={{marginTop:"3px"}} /> */}
-                  <Text color={"white"}  fontSize="sm">
+                  <Text color={"white"} fontSize="sm">
                     Saved Items <ChevronDownIcon />
-                  </Text >
+                  </Text>
                 </MenuButton>
                 <MenuList>
                   <MenuItem>

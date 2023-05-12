@@ -22,7 +22,7 @@ export const Cart = () => {
   const navigate = useNavigate();
   const CheckOut = () => {
     axios
-      .post("https://beautiful-calf-wear.cyclic.app/OrderDetail", cartData)
+      .post("https://json-server-bestbuy.onrender.com/OrderDetail", cartData)
       .then((response) => {
         console.log("Cart data added to orders successfully");
         console.log(response.data); // response data from server
@@ -48,76 +48,22 @@ export const Cart = () => {
   // console.log(remove);
   return (
     <div className="parentdiv">
-      <div
-        style={{
-          display: "flex",
-          height: "100px",
-          justifyContent: "space-evenly",
-          backgroundColor: "rgba(240,242,244)",
-        }}
-      >
-        <img src="https://www.bestbuy.com/~assets/bby/_com/updated-microsoft-image-ea7d2787f444188a223e599cf09fc63b.jpg" />
-        <div>
-          <h1 style={{ fontWeight: "bold", fontSize: "20px" }}>
-            You're going to need Word, Excel and PowerPoint.
-          </h1>
-          <h6 style={{ fontSize: "12px" }}>
-            1 year of Microsoft 365 with this qualifying product today and get 3
-            bonus months
-          </h6>
-          <p style={{ fontSize: "12px", color: "grey" }}>
-            Auto-Renewal Details: Savings applies to initial purchase only.
-          </p>
-        </div>
-        <select
-          style={{
-            height: "60%",
-            marginTop: "12px",
-            border: "1px solid grey",
-            padding: "5px",
-            borderRadius: "4px",
-          }}
-        >
-          <option value="">1 Person - PC/Mac - $69.99/yr </option>
-          <option value="">6 Person - PC/Mac - $99.99/yr </option>
-        </select>
-        <button className="button">Add to Cart</button>
-      </div>
       <div className="firstDiv">
         <div className="secondDiv">
           <h2>Your Cart</h2>
           <div className="parentdiv1">
             <div className="yourCart">
               <div className="bestBuy">
-                <h3>BEST BUY</h3>
+                <h3>Tech Trove</h3>
                 <h1>totaltech</h1>
               </div>
-              <div>
-                <h5>
-                  Unlock up to $167.761 See Disclaimer1in savings on AppleCare+
-                </h5>
-                <p>
-                  You’ll also get discounted services, extended returns, up to
-                  24 months protection on most
-                </p>
-                <p>purchases and more with an active membership.</p>
-              </div>
+
               <button className="button" style={{ height: "30px" }}>
                 Unlock Saving
               </button>
             </div>
           </div>
 
-          <div className="specialoffers">
-            <div>
-              <AiTwotoneTag />
-              <h2>Special Offers</h2>
-            </div>
-            <p style={{ fontSize: "15px" }}>
-              We found offers available based on items in your cart!
-            </p>
-            <Link style={{ color: "blue" }}>See all</Link>
-          </div>
           <div className="cartDiv">
             <img src="" alt="" />
           </div>
@@ -146,11 +92,6 @@ export const Cart = () => {
             <h4>${totalCartPrice}</h4>
           </div>
           <button onClick={CheckOut}>Checkout </button>
-          {/* <button>
-            <Link to={"/checkout"} >
-              PayPal <h4>checkout</h4>
-            </Link>
-          </button> */}
 
           <p>
             My Best Buy® members enjoy exclusive offers & free shipping with no

@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Flex,
+  Grid,
   Heading,
   HStack,
   Input,
@@ -26,11 +27,10 @@ const Footer = () => {
         bgColor={"#f0f2f4"}
         p="1rem 2rem 2rem 2rem"
         lineHeight={"2.2rem"}
-       borderTop={"1px solid white"}
-      
+        borderTop={"1px solid white"}
       >
-        <HStack gap={"9rem"}>
-          <Box>
+        <Flex gap={{md:"9rem" ,sm:"1rem"}}   direction={{base:"column", sm:"column" ,md:"row"}}>
+          <Box >
             <Heading as="h5" size="sm" color={"black"}>
               Order & Purchases
             </Heading>
@@ -69,7 +69,7 @@ const Footer = () => {
               Lease to Own
             </Text>
           </Box>
-          <Box>
+          <Box >
             <Heading as="h5" size="sm" color={"black"}>
               Support & Services
             </Heading>
@@ -109,7 +109,7 @@ const Footer = () => {
               Member Offers
             </Text>
           </Box>
-          <Box>
+          <Box >
             <Heading as="h5" size="sm" color={"black"}>
               Partnerships
             </Heading>
@@ -150,7 +150,7 @@ const Footer = () => {
               Discover & Learn
             </Text>
           </Box>
-          <Box p="1.2rem" bgColor={"white"}>
+          <Box p="1.2rem" bgColor={"white"} >
             <VStack
               divider={<StackDivider borderColor="gray.400" />}
               spacing={4}
@@ -200,7 +200,7 @@ const Footer = () => {
               </Box>
             </VStack>
           </Box>
-        </HStack>
+        </Flex>
       </Box>
     </>
   );

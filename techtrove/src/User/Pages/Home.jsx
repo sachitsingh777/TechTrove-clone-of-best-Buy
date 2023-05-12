@@ -1,4 +1,12 @@
-import { Box, Divider, Heading, HStack, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Flex,
+  Heading,
+  HStack,
+  Image,
+  Text,
+} from "@chakra-ui/react";
 import React from "react";
 import HomeCard from "../Components/HomeCard";
 import HomeCard2 from "../Components/HomeCard2";
@@ -10,7 +18,7 @@ const Home = () => {
   return (
     <Box color={"black"} bgColor="white">
       <Menubar />
-      <HStack spacing={"25px"} p="1rem" bgColor="white">
+      <Flex gap={"20px"} p="1rem" bgColor="white">
         <Box
           w={"44%"}
           h="40rem"
@@ -21,6 +29,12 @@ const Home = () => {
           color={"black"}
           backgroundRepeat="no-repeat"
           _hover={{ cursor: "pointer" }}
+          display={{
+            base: "block",
+            lg: "block",
+            md: "none",
+            sm: "none",
+          }}
         >
           <Box mt={"8rem"}>
             <Heading as="h3" size="lg" mb={"0.5rem"}>
@@ -34,7 +48,7 @@ const Home = () => {
             </Text>
           </Box>
         </Box>
-        <Box h="40rem" w={"56%"} bgColor="white">
+        <Box h="40rem" w={{ lg: "56%", sm: "100%" }} bgColor="white">
           <Box border={"1px solid #A0AEC0"} p="1rem" mb="26px" h={"36%"}>
             <Heading as="h5" size="sm">
               Recomanded for you
@@ -74,7 +88,7 @@ const Home = () => {
               <Image
                 src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6340/6340453_sd.jpg;maxHeight=640;maxWidth=550"
                 h={"50%"}
-                margin="40px 0px 15px 100px"
+                margin={{ lg: "40px 0px 15px 100px" }}
               />
               <Text
                 ml={"15px"}
@@ -96,14 +110,14 @@ const Home = () => {
             </Box>
           </Box>
         </Box>
-      </HStack>
+      </Flex>
       <br />
 
       <Box p="1rem">
         <Heading as="h4" size="md" mb={"12px"}>
           Deals inspired by your shopping
         </Heading>
-        <Divider colorScheme={"gray"} />
+        <Divider colorScheme={"#888a8b"} />
 
         <Box overflowX={"auto"}>
           <Box
@@ -112,7 +126,7 @@ const Home = () => {
             width="1450px"
             p={"2rem"}
             gap={"5px"}
-            borderTop="1px solid #A0AEC0"
+            // borderTop="1px solid #A0AEC0"
           >
             {TopDeals?.map((el) => (
               <HomeCard2 key={el.id} {...el} />
@@ -235,7 +249,7 @@ const Home = () => {
         <Heading as="h4" size="md" mb={"12px"}>
           You may also like
         </Heading>
-        <Divider colorScheme={"gray"} />
+        <Divider colorScheme={ "#838486"} />
         <Box overflowX={"auto"}>
           <Box
             display={"flex"}
@@ -243,7 +257,7 @@ const Home = () => {
             flexDirection="row"
             p={"1rem"}
             gap={"5px"}
-            borderTop="1px solid #A0AEC0"
+            // borderTop="1px solid #A0AEC0"
           >
             {Laptops?.map((el) => (
               <HomeCard2 key={el.id} {...el} />

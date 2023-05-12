@@ -40,7 +40,7 @@ export const Login = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2>Sign In to Best Buy</h2>
+        <h2>Sign In to Tech Trove</h2>
         <input
           type={"text"}
           placeholder="Email Address"
@@ -89,7 +89,7 @@ export const Login = () => {
         <hr style={{ width: "100%" }} />
         <div className="createAccount">
           <h5>Don't have an account?</h5>
-          <Link className="link" to={"./createaccount"}>
+          <Link className="link" to={"/createaccount"}>
             Create an account
           </Link>
         </div>

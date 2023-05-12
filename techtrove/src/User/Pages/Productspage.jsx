@@ -10,10 +10,7 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
+  Box,
   Button,
 } from "@chakra-ui/react";
 const H4 = styled.h3`
@@ -24,6 +21,7 @@ const H6 = styled.h3`
   font-size: 17px;
   font-weight: 600;
 `;
+
 const Productspage = () => {
   const data = useSelector((store) => store.productreducer.products);
   const dispatch = useDispatch();
@@ -73,12 +71,10 @@ const Productspage = () => {
   console.log(sort);
   const SORT = () => {
     return (
-      //       GET /posts?_sort=views&_order=asc
-      // GET /posts/1/comments?_sort=votes&_order=asc
       <Menu>
         {({ isOpen }) => (
-          <>
-            <MenuButton isActive={isOpen} as={Button} rightIcon={">"}>
+          <Box mt="15px">
+            <MenuButton isActive={isOpen} as={Button} rightIcon={"V"}>
               {/* {isOpen ? "Close" : "Open"} */}
               Sorting By price
             </MenuButton>
@@ -89,7 +85,7 @@ const Productspage = () => {
               <MenuItem onClick={handleDesc}>Hight to Low</MenuItem>
               <MenuItem onClick={() => setReset("")}>Reset</MenuItem>
             </MenuList>
-          </>
+          </Box>
         )}
       </Menu>
     );
@@ -156,20 +152,13 @@ const Productspage = () => {
   console.log(obj);
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          height: "auto",
-          gap: "2%",
-          paddingLeft: "2%",
-        }}
-      >
-        <div
-          style={{
-            height: "500px",
-            width: "20%",
-            overflowY: "scroll",
-          }}
+      <Box display="flex" gap="12px">
+        <Box
+          p="15px 0px 15px 25px"
+          width="20%"
+          height="100vh"
+          overflowY="scroll"
+          display={{base:"block",md:"block",sm:"none"}}
         >
           <H4>Filtering products</H4>
           <H6>Filter by Brand</H6>
@@ -323,16 +312,16 @@ const Productspage = () => {
           />
           <label htmlFor=""> Other Gadgets</label>
           <br />
-        </div>
-        <div
+        </Box>
+        <Box
           style={{
             height: "auto",
             width: "78%",
           }}
         >
-          <div>
+          <Box>
             <SORT />
-          </div>
+          </Box>
           {data === undefined ? (
             <h1 style={{ color: "red" }}> Loading Error</h1>
           ) : (
@@ -340,9 +329,9 @@ const Productspage = () => {
               return <Productscard key={el.id} {...el} />;
             })
           )}
-        </div>
-      </div>
-      <div
+        </Box>
+      </Box>
+      <Box
         style={{
           display: "flex",
           justifyContent: "center",
@@ -358,7 +347,7 @@ const Productspage = () => {
           color={"white"}
           _hover={{ backgroundColor: "grey", color: "black" }}
           onClick={First}
-          isDisabled={page == 1}
+          isDisabled={page === 1}
         >
           First
         </Button>
@@ -385,7 +374,7 @@ const Productspage = () => {
           bg={"blue"}
           color={"white"}
           onClick={() => handlepage(1)}
-          isDisabled={page == Math.ceil(total / 5)}
+          isDisabled={page === Math.ceil(total / 5)}
         >
           Next
         </Button>
@@ -397,11 +386,11 @@ const Productspage = () => {
           bg={"blue"}
           color={"white"}
           onClick={Last}
-          isDisabled={page == Math.ceil(total / 5)}
+          isDisabled={page === Math.ceil(total / 5)}
         >
           Last
         </Button>
-      </div>
+      </Box>
     </>
   );
 };

@@ -8,7 +8,7 @@ export const getData = (obj, sort, reset, page) => async (dispatch) => {
   try {
     let result = await axios.get(
       //_sort=views&_order=asc
-      `https://beautiful-calf-wear.cyclic.app/products?_page=${page}&_limit=5&${reset}sort=price&_order=${sort}`,
+      `https://json-server-bestbuy.onrender.com/products?_page=${page}&_limit=5&${reset}sort=price&_order=${sort}`,
       obj
     );
     // console.log("sapnadata", result);

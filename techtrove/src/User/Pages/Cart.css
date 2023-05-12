@@ -61,36 +61,26 @@
     font-size: 35px;
 }
 
-.bestBuy~div {
-    height: 100%;
-}
+
 
 .bestBuy~div>h5 {
     font-weight: bold;
     font-size: 14px;
 }
 
-.specialoffers {
-    /* border: 1px solid black; */
-    background-color: white;
-    display: flex;
-    align-items: center;
-    height: 50px;
-    padding: 20px;
-}
 
-.specialoffers>div {
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
+
+
 
 .specialoffers>div>h2 {
     margin: 0px 10px 0px 10px
 }
 
 
-
+.parentdiv{
+    /* border: 1px solid red; */
+    display: flex;
+}
 
 
 

@@ -30,11 +30,12 @@
 }
 
 .secondDiv {
-  width: 70%;
+  width: 100%;
   background-color: white;
   /* border: 1px solid green; */
   background-color: rgb(243, 246, 249);
   padding: 20px;
+  
 }
 
 .yourCart {
@@ -98,7 +99,7 @@ hr {
 }
 
 .orderSummary > button {
-  border: 1px solid teal;
+  /* border: 1px solid teal; */
   width: 100%;
   height: 50px;
   display: flex;
@@ -157,4 +158,5 @@ hr {
 .productsdiv {
   background-color: white;
   padding: 20px;
+  /* border: 1px solid red; */
 }

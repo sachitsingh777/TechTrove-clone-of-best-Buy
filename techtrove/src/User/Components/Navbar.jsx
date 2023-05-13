@@ -13,16 +13,37 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "@chakra-ui/react";
-import React from "react";
+import  { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineShop } from "react-icons/ai";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { getData } from "../Redux/productReducer/action";
 
 const Navbar = () => {
+  const [query, setQuery] = useState("");
+const dispatch = useDispatch()
+
+const data = useSelector((store) => store.productreducer.products);
+
+  const handleSearch =(e)=>{
+    setQuery(e.target.value)
+    // console.log(query);
+  }
+
+  let obj = {
+    params:{
+      q:query
+    }
+  }
+
+  useEffect(()=>{
+    dispatch(getData(obj))
+  },[query])
 
   return (
     <Box
@@ -113,6 +134,7 @@ const Navbar = () => {
               borderWidth="2px"
               borderColor="gray.200"
               backgroundColor={"white"}
+              onChnage={handleSearch}
             ></Input>
             <InputRightElement width="4.5rem">
               <BsSearch style={{ color: "black", fontSize: "1.5rem" }} />

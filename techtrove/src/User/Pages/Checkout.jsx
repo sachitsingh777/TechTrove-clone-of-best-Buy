@@ -11,22 +11,64 @@ import {
   Input,
   Select,
   Text,
-  VStack,
+  VStack,useToast
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import PayPal from "../Components/PayPal";
-import { useToast } from "@chakra-ui/react";
+
 import { CARTGetProduct, getCartData } from "../Redux/CartReducer/Action";
-import { useEffect } from "react";
 import CheckOutCard from "../Components/CheckOutCard";
 import ShipCard from "../Components/ShipCard";
 import { useDispatch, useSelector } from "react-redux";
+import Navbar from "../Components/Navbar";
 
 const Checkout = () => {
+  const [formErrors, setFormErrors] = useState({});
   const [orders, setOrders] = useState([]);
   const dispatch = useDispatch();
   const { cartData } = useSelector((store) => store.cartReducer);
   const toast = useToast();
+
+  // Form validation function
+  const validateForm = () => {
+    const errors = {};
+
+    // Validate firstName
+    if (!formValues.firstName.trim()) {
+      errors.firstName = "First Name is required";
+    }
+
+    // Validate lastName
+    if (!formValues.lastName.trim()) {
+      errors.lastName = "Last Name is required";
+    }
+
+    // Validate address
+    if (!formValues.address.trim()) {
+      errors.address = "Address is required";
+    }
+
+    // Validate city
+    if (!formValues.city.trim()) {
+      errors.city = "City is required";
+    }
+
+    // Validate state
+    if (!formValues.state.trim()) {
+      errors.state = "State is required";
+    }
+
+    // Validate zip
+    if (!formValues.zip.trim()) {
+      errors.zip = "ZIP is required";
+    } else if (!/^\d{6}$/.test(formValues.zip)) {
+      errors.zip = "ZIP code must be a 5-digit number";
+    }
+
+    setFormErrors(errors);
+
+    return Object.keys(errors).length === 0;
+  };
 
   const [formValues, setFormValues] = useState({
     firstName: "",
@@ -47,21 +89,28 @@ const Checkout = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    localStorage.setItem("formData", JSON.stringify(formValues));
-    console.log("Form submitted:", formValues);
-    setFormValues({
-      firstName: "",
-      lastName: "",
-      address: "",
-      city: "",
-      state: "",
-      zip: "",
-    });
-    toast({
-      title: `Data saved Successful!`,
-      status: "success",
-      isClosable: true,
-    });
+
+    const isValidform = validateForm();
+
+    if (isValidform) {
+      localStorage.setItem("formData", JSON.stringify(formValues));
+      console.log("Form submitted:", formValues);
+      setFormValues({
+        firstName: "",
+        lastName: "",
+        address: "",
+        city: "",
+        state: "",
+        zip: "",
+      });
+      toast({
+        title: `Data saved Successful!`,
+        status: "success",
+        isClosable: true,
+      });
+    } else {
+      console.log("Form contains errors:", formErrors);
+    }
   };
 
   useEffect(() => {
@@ -75,6 +124,7 @@ const Checkout = () => {
   console.log(orders);
   return (
     <>
+     <Navbar />
       <Box bgColor={"#f0f2f4"}>
         <Heading
           maxW="66%"
@@ -142,6 +192,11 @@ const Checkout = () => {
                           value={formValues.firstName}
                           onChange={handleInputChange}
                         />
+                        {formErrors.firstName && (
+                          <Text color="red" fontSize="sm">
+                            {formErrors.firstName}
+                          </Text>
+                        )}
                       </Flex>
                       <Flex direction={"column"} spacing={"0px"}>
                         <FormLabel mt={"1rem"}>Last Name</FormLabel>
@@ -151,6 +206,11 @@ const Checkout = () => {
                           value={formValues.lastName}
                           onChange={handleInputChange}
                         />
+                        {formErrors.lastName && (
+                          <Text color="red" fontSize="sm">
+                            {formErrors.lastName}
+                          </Text>
+                        )}
                       </Flex>
                     </Flex>
 
@@ -162,6 +222,11 @@ const Checkout = () => {
                       value={formValues.address}
                       onChange={handleInputChange}
                     />
+                    {formErrors.address && (
+                          <Text color="red" fontSize="sm">
+                            {formErrors.address}
+                          </Text>
+                        )}
 
                     <Flex>
                       <HStack spacing={"0.5rem"}>
@@ -173,6 +238,11 @@ const Checkout = () => {
                             value={formValues.city}
                             onChange={handleInputChange}
                           />
+                          {formErrors.city && (
+                          <Text color="red" fontSize="sm">
+                            {formErrors.city}
+                          </Text>
+                        )}
                         </Flex>
 
                         <Flex direction={"column"} spacing={"0px"}>
@@ -192,6 +262,11 @@ const Checkout = () => {
                             <option value="GE">GE</option>
                             <option value="FE">FE</option>
                           </Select>
+                          {formErrors.state && (
+                          <Text color="red" fontSize="sm">
+                            {formErrors.state}
+                          </Text>
+                        )}
                         </Flex>
 
                         <Flex direction={"column"} spacing={"0px"}>
@@ -202,6 +277,11 @@ const Checkout = () => {
                             value={formValues.zip}
                             onChange={handleInputChange}
                           />
+                          {formErrors.zip && (
+                          <Text color="red" fontSize="sm">
+                            {formErrors.zip}
+                          </Text>
+                        )}
                         </Flex>
                       </HStack>
                     </Flex>

@@ -13,6 +13,8 @@ import {
   Box,
   Button,
 } from "@chakra-ui/react";
+import Navbar from "../Components/Navbar";
+
 const H4 = styled.h3`
   font-size: 20px;
   font-weight: 800;
@@ -38,6 +40,12 @@ const Productspage = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const location = useLocation();
+  const [query, setQuery] = useState("");
+
+  const handleSearch =(e)=>{
+    setQuery(e.target.value)
+    // console.log(query);
+  }
 
   const getLength = async () => {
     const data = await axios.get(
@@ -128,6 +136,7 @@ const Productspage = () => {
       brand: seacrchparams.getAll("brand"),
       rate: seacrchparams.getAll("rate"),
       category: seacrchparams.getAll("category"),
+      q:query,
     },
   };
 
@@ -138,20 +147,22 @@ const Productspage = () => {
       brand: filter,
       rate: rating,
       category: category,
+      q: query,
     };
     getLength();
     setSearchparams(params);
     dispatch(getData);
-  }, [filter, rating, category, sort, page]);
+  }, [filter, rating, category, sort, page,query]);
 
   //filterby getting use params
   useEffect(() => {
     dispatch(getData(obj, sort, reset, page));
-  }, [location.search, sort, reset, page]);
+  }, [location.search, sort, reset, page,query]);
 
   console.log(obj);
   return (
     <>
+     <Navbar handleSearch={handleSearch}/>
       <Box display="flex" gap="12px">
         <Box
           p="15px 0px 15px 25px"

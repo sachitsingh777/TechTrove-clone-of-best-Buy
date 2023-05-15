@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
@@ -7,6 +7,8 @@ import { GoKey } from "react-icons/go";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../Redux/AuthReducer/Action";
+import { useToast } from "@chakra-ui/react";
+import Navbar from "../Components/Navbar";
 
 const initialState = {
   email: "",
@@ -15,7 +17,10 @@ const initialState = {
 
 export const Login = () => {
   const [loginData, setLoginData] = useState(initialState);
+
   const dispatch = useDispatch();
+  const toast = useToast();
+  const navigate = useNavigate();
   const selector = useSelector((store) => {
     return store.authReducer.isAuth;
   });
@@ -24,6 +29,7 @@ export const Login = () => {
       <Navigate to="" />;
     }
   }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLoginData((prev) => {
@@ -34,10 +40,23 @@ export const Login = () => {
     e.preventDefault();
     dispatch(userLogin(loginData));
     // console.log(loginData)
+    toast({
+      title: "Login successful",
+      description: "Have a great day",
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+      position: "top",
+    });
+
+    navigate("/");
   };
 
   const { email, password } = loginData;
   return (
+    <>
+     <Navbar />
+   
     <div>
       <form onSubmit={handleSubmit}>
         <h2>Sign In to Tech Trove</h2>
@@ -47,6 +66,7 @@ export const Login = () => {
           name="email"
           value={email}
           onChange={handleChange}
+          required
         />
         <div className="center_div">
           <input type="checkbox" style={{ border: "1px solid black" }} />
@@ -58,6 +78,7 @@ export const Login = () => {
           name="password"
           value={password}
           onChange={handleChange}
+          required
         />
         <Link className="forgetPassword">Forget your password?</Link>
         <input type="submit" value={"Sign In"} className="signInbutton" />
@@ -94,6 +115,6 @@ export const Login = () => {
           </Link>
         </div>
       </form>
-    </div>
+    </div> </>
   );
 };

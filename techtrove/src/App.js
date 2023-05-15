@@ -7,7 +7,7 @@ import AdminSideBar from './Admin/AdminComponent/AdminSideBar'
 function App() {
   return (
     <> 
-      <Navbar />
+     
       <AllRoutes />
       <Footer />
      

@@ -24,26 +24,26 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { getData } from "../Redux/productReducer/action";
 
-const Navbar = () => {
-  const [query, setQuery] = useState("");
-const dispatch = useDispatch()
+const Navbar = ({handleSearch}) => {
+//   const [query, setQuery] = useState("");
+// const dispatch = useDispatch()
 
-const data = useSelector((store) => store.productreducer.products);
+// const data = useSelector((store) => store.productreducer.products);
 
-  const handleSearch =(e)=>{
-    setQuery(e.target.value)
-    // console.log(query);
-  }
+//   const handleSearch =(e)=>{
+//     setQuery(e.target.value)
+//     // console.log(query);
+//   }
 
-  let obj = {
-    params:{
-      q:query
-    }
-  }
+//   let obj = {
+//     params:{
+//       q:query
+//     }
+//   }
 
-  useEffect(()=>{
-    dispatch(getData(obj))
-  },[query])
+//   useEffect(()=>{
+//     dispatch(getData(obj))
+//   },[query])
 
   return (
     <Box
@@ -134,7 +134,7 @@ const data = useSelector((store) => store.productreducer.products);
               borderWidth="2px"
               borderColor="gray.200"
               backgroundColor={"white"}
-              onChnage={handleSearch}
+              onChange={handleSearch}
             ></Input>
             <InputRightElement width="4.5rem">
               <BsSearch style={{ color: "black", fontSize: "1.5rem" }} />

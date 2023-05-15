@@ -2,7 +2,7 @@ import * as types from "./action.types";
 import axios from "axios";
 // import { MdOutlineEmojiObjects } from "react-icons/md";
 export const getData = (obj, sort, reset, page) => async (dispatch) => {
-  console.log(sort);
+  console.log("123",obj);
   dispatch({ type: types.GET_PRODUCT_REQUEST });
   //https://dead-earrings-tick.cyclic.app/products?_sort=${sort}&_order=${order}
   try {

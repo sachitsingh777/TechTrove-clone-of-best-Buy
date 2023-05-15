@@ -13,9 +13,12 @@ import HomeCard2 from "../Components/HomeCard2";
 import Menubar from "../Components/Menubar";
 import { BestBuy, Laptops } from "../Homepageconstant/HomepageConstant";
 import { TopDeals } from "../Homepageconstant/HomepageConstant";
+import Navbar from "../Components/Navbar";
 
 const Home = () => {
   return (
+    <>
+    <Navbar />
     <Box color={"black"} bgColor="white">
       <Menubar />
       <Flex gap={"20px"} p="1rem" bgColor="white">
@@ -266,6 +269,7 @@ const Home = () => {
         </Box>
       </Box>
     </Box>
+     </>
   );
 };
 

@@ -12,6 +12,7 @@ import "./Cart.css";
 import { AiTwotoneTag, AiOutlineGift } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Navbar from "../Components/Navbar";
 export const Cart = () => {
   const [remove, setRemove] = useState(true);
   const dispatch = useDispatch();
@@ -47,6 +48,9 @@ export const Cart = () => {
   );
   // console.log(remove);
   return (
+    <>
+    <Navbar />
+  
     <div className="parentdiv">
       <div className="firstDiv">
         <div className="secondDiv">
@@ -134,5 +138,6 @@ export const Cart = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
